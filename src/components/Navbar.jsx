@@ -13,8 +13,6 @@ const ksvLogo = "/ksv.png";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const location = useLocation();
@@ -27,22 +25,21 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // NEW SEQUENCE: Research | Activities | Achievements | Community | Dashboard | Join Us | Appointment
+    // Requested Sequence: SRL Sessions | Achievements | researchers | Leaderboard | Join Us | Appointment
     const menuItems = [
-        { label: "Research", path: "/researchers" },
-        { label: "Activities", path: "/sessions" },
+        { label: "SRL Sessions", path: "/sessions" },
         { label: "Achievements", path: "/achievements" },
-        { label: "Community", path: "/leaderboard" },
-        { label: "Dashboard", path: "#" }, // Placeholder for now
+        { label: "Researchers", path: "/researchers" },
+        { label: "Leaderboard", path: "/leaderboard" },
     ];
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-primary/95 backdrop-blur-md shadow-lg h-[75px]' : 'bg-primary h-[88px]'}`}>
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#134E4A]/95 backdrop-blur-md shadow-lg h-[75px]' : 'bg-[#134E4A] h-[88px]'}`}>
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 h-full font-sans">
                     <div className="flex items-center h-full relative">
 
-                        {/* LEFT — SRL Identity (Click to Home) */}
+                        {/* LEFT — SRL Identity */}
                         <Link to="/" className="flex items-center gap-3 shrink-0 group">
                             <img
                                 src={srlLogo}
@@ -57,8 +54,8 @@ const Navbar = () => {
                             </div>
                         </Link>
 
-                        {/* CENTER — DESKTOP MENU (REORDERED) */}
-                        <div className="hidden xl:flex absolute left-1/2 -translate-x-1/2 items-center gap-6">
+                        {/* CENTER — DESKTOP MENU (SINGLE LINE) */}
+                        <div className="hidden xl:flex absolute left-[55%] -translate-x-1/2 items-center gap-5">
                             {menuItems.map((item) => (
                                 <NavLink
                                     key={item.label}
@@ -77,22 +74,22 @@ const Navbar = () => {
                                 </NavLink>
                             ))}
 
-                            {/* SEQUENCE CONTINUES: Join Us | Appointment */}
+                            {/* Join Us & Appointment in the same line */}
                             <div className="flex items-center gap-4 ml-2">
                                 <JoinUsButton onClick={() => setIsModalOpen(true)} className="scale-90" />
                                 <NavLink
                                     to="/appointment"
                                     className={({ isActive }) =>
                                         `text-[10px] font-black uppercase tracking-widest px-5 py-2.5 rounded-full transition-all border-2
-                                        ${isActive ? 'bg-white text-primary border-white' : 'bg-transparent text-white border-white/30 hover:bg-white hover:text-primary hover:border-white hover:shadow-lg'}`
+                                        ${isActive ? 'bg-white text-[#134E4A] border-white font-bold' : 'bg-transparent text-white border-white/30 hover:bg-white hover:text-[#134E4A] hover:border-white hover:shadow-lg'}`
                                     }
                                 >
-                                    Appointment System
+                                    SRL Appointment System
                                 </NavLink>
                             </div>
                         </div>
 
-                        {/* RIGHT — LARGER LOGOS */}
+                        {/* RIGHT — LOGOS */}
                         <div className="ml-auto hidden xl:flex items-center gap-5 pl-4 border-l border-white/20 shrink-0">
                             <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
                             <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
@@ -116,7 +113,7 @@ const Navbar = () => {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="xl:hidden bg-primary shadow-2xl overflow-hidden border-t border-white/10"
+                            className="xl:hidden bg-[#134E4A] shadow-2xl overflow-hidden border-t border-white/10"
                         >
                             <div className="flex flex-col px-6 py-8 gap-5">
                                 {menuItems.map((item) => (
@@ -137,9 +134,9 @@ const Navbar = () => {
                                     <NavLink
                                         to="/appointment"
                                         onClick={() => setOpen(false)}
-                                        className="block w-full bg-white text-primary text-center py-4 rounded-full font-black uppercase tracking-widest hover:bg-opacity-90 transition-all font-sans"
+                                        className="block w-full bg-white text-[#134E4A] text-center py-4 rounded-full font-black uppercase tracking-widest hover:bg-opacity-90 transition-all font-sans"
                                     >
-                                        Appointment System
+                                        SRL Appointment System
                                     </NavLink>
                                 </div>
                             </div>
