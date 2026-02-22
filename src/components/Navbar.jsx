@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import JoinUsButton from './JoinUsButton';
-import JoinUsModal from './JoinUsModal';
+// import JoinUsButton from './JoinUsButton';
+// import JoinUsModal from './JoinUsModal';
 
 // Using local SVG logo from public/src
 import srlLogo from "/SRL Logo.svg";
@@ -94,7 +94,7 @@ const Navbar = () => {
                         {/* Right: Actions & Partner Logos */}
                         <div className="hidden lg:flex items-center gap-4">
                             <div className="flex items-center gap-3">
-                                <JoinUsButton onClick={() => setIsModalOpen(true)} />
+                                {/* <JoinUsButton onClick={() => setIsModalOpen(true)} /> */}
                                 <NavLink
                                     to="/appointment"
                                     className={({ isActive }) =>
@@ -162,7 +162,7 @@ const Navbar = () => {
                                 ))}
 
                                 <div className="pt-6 space-y-4">
-                                    <JoinUsButton onClick={() => { setIsModalOpen(true); setIsOpen(false); }} className="w-full justify-center py-5" />
+                                    {/* <JoinUsButton onClick={() => { setIsModalOpen(true); setIsOpen(false); }} className="w-full justify-center py-5" /> */}
                                     <NavLink
                                         to="/appointment"
                                         onClick={() => setIsOpen(false)}
@@ -189,7 +189,7 @@ const Navbar = () => {
                 </AnimatePresence>
             </nav>
 
-            <JoinUsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            {/* <JoinUsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
         </>
     );
 };

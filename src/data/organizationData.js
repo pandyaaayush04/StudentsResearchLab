@@ -3,6 +3,8 @@ import ksvLogo from "../assets/KSV Logo.png";
 import mmpsrpcLogo from "../assets/MMPSRPC Logo.png";
 import chairmanPhoto from "../assets/chairman.png";
 import mamPhoto from "../assets/Ma'am Photo.png";
+import pujyaChhaganbha from "../assets/pujya_chhaganbha.jpg";
+import maneklalPatel from "../assets/shri_maneklal_patel.jpg";
 
 export const organizationData = {
     "svkm": {
@@ -24,9 +26,14 @@ export const organizationData = {
         vision: "To be a leading educational trust that shapes the future of the nation through excellence and innovation.",
         founders: [
             {
-                name: "Hon'ble Chairman",
-                image: chairmanPhoto,
-                quote: "Education is the most powerful weapon which you can use to change the world."
+                name: "Pujya Chhaganbha",
+                image: pujyaChhaganbha,
+                quote: "કર ભલા હોગા ભલા"
+            },
+            {
+                name: "Shri Maneklal M. Patel",
+                image: maneklalPatel,
+                quote: "શિક્ષણ એ જ સાચી સેવા છે"
             }
         ],
         goals: [
