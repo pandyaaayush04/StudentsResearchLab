@@ -36,8 +36,8 @@ const Navbar = () => {
     return (
         <>
             <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#134E4A]/95 backdrop-blur-md shadow-lg h-[75px]' : 'bg-[#134E4A] h-[88px]'}`}>
-                <div className="max-w-[1440px] mx-auto px-4 sm:px-6 h-full font-sans">
-                    <div className="flex items-center h-full relative">
+                <div className="max-w-[1536px] mx-auto px-4 sm:px-8 h-full font-sans">
+                    <div className="flex items-center h-full">
 
                         {/* LEFT — SRL Identity */}
                         <Link to="/" className="flex items-center gap-3 shrink-0 group">
@@ -46,54 +46,57 @@ const Navbar = () => {
                                 alt="SRL"
                                 className="h-10 sm:h-12 object-contain group-hover:rotate-6 transition-transform"
                             />
-                            <div className="flex flex-col">
-                                <span className="hidden sm:block text-base sm:text-xl font-black text-white leading-none tracking-tight">
-                                    SRL
-                                </span>
-                                <span className="hidden sm:block text-[8px] uppercase tracking-[0.3em] text-white/70 font-bold">Lab</span>
-                            </div>
+                            <span className="hidden sm:block text-2xl font-black text-white tracking-tighter">
+                                SRL
+                            </span>
                         </Link>
 
-                        {/* CENTER — DESKTOP MENU (SINGLE LINE) */}
-                        <div className="hidden xl:flex absolute left-[55%] -translate-x-1/2 items-center gap-5">
-                            {menuItems.map((item) => (
-                                <NavLink
-                                    key={item.label}
-                                    to={item.path}
-                                    className={({ isActive }) =>
-                                        `relative font-bold text-[11px] uppercase tracking-widest transition-all hover:text-white whitespace-nowrap
-                                        ${isActive ? "text-white" : "text-white/80"}`
-                                    }
-                                >
-                                    {({ isActive }) => (
-                                        <>
-                                            {item.label}
-                                            <div className={`absolute -bottom-1 left-0 h-[2px] bg-white transition-all duration-300 ${isActive ? 'w-full' : 'w-0'}`} />
-                                        </>
-                                    )}
-                                </NavLink>
-                            ))}
+                        {/* RIGHT SECTION — TABS + BUTTONS + PARTNERS */}
+                        <div className="hidden xl:flex items-center ml-auto gap-8">
+                            {/* NAVIGATION TABS */}
+                            <div className="flex items-center gap-6">
+                                {menuItems.map((item) => (
+                                    <NavLink
+                                        key={item.label}
+                                        to={item.path}
+                                        className={({ isActive }) =>
+                                            `relative font-bold text-[11px] uppercase tracking-widest transition-all hover:text-white whitespace-nowrap
+                                            ${isActive ? "text-white" : "text-white/80"}`
+                                        }
+                                    >
+                                        {({ isActive }) => (
+                                            <>
+                                                {item.label}
+                                                <div className={`absolute -bottom-1 left-0 h-[2px] bg-white transition-all duration-300 ${isActive ? 'w-full' : 'w-0'}`} />
+                                            </>
+                                        )}
+                                    </NavLink>
+                                ))}
+                            </div>
 
-                            {/* Join Us & Appointment in the same line */}
-                            <div className="flex items-center gap-4 ml-2">
-                                <JoinUsButton onClick={() => setIsModalOpen(true)} className="scale-90" />
+                            {/* ACTION BUTTONS (Single Line) */}
+                            <div className="flex items-center gap-4">
+                                <JoinUsButton
+                                    onClick={() => setIsModalOpen(true)}
+                                    className="whitespace-nowrap px-8"
+                                />
                                 <NavLink
                                     to="/appointment"
                                     className={({ isActive }) =>
-                                        `text-[10px] font-black uppercase tracking-widest px-5 py-2.5 rounded-full transition-all border-2
-                                        ${isActive ? 'bg-white text-[#134E4A] border-white font-bold' : 'bg-transparent text-white border-white/30 hover:bg-white hover:text-[#134E4A] hover:border-white hover:shadow-lg'}`
+                                        `text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full transition-all border-2 whitespace-nowrap
+                                        ${isActive ? 'bg-white text-[#134E4A] border-white' : 'bg-transparent text-white border-white/30 hover:bg-white hover:text-[#134E4A] hover:border-white hover:shadow-lg'}`
                                     }
                                 >
                                     SRL Appointment System
                                 </NavLink>
                             </div>
-                        </div>
 
-                        {/* RIGHT — LOGOS */}
-                        <div className="ml-auto hidden xl:flex items-center gap-5 pl-4 border-l border-white/20 shrink-0">
-                            <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                            <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                            <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                            {/* PARTNER LOGOS */}
+                            <div className="flex items-center gap-5 pl-8 border-l border-white/20 shrink-0">
+                                <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                                <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                                <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                            </div>
                         </div>
 
                         {/* MOBILE MENU TOGGLE */}
