@@ -126,7 +126,7 @@ const timelineSteps = [
   },
   {
     step: "Dec 2025",
-    title: "Alumni Connenct SRL Sessions",
+    title: "Alumni Connect SRL Sessions",
     description: "An interactive gathering where alumni reconnect, share experiences, and inspire SRL members with their journeys and insights.",
     icon: <MedalIcon />,
   },
