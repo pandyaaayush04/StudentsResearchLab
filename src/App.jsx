@@ -15,7 +15,7 @@ import Sessions from './pages/Sessions';
 import Achievements from './pages/Achievements';
 import Researchers from './pages/Researchers';
 import LeaderBoard from './pages/LeaderBoard';
-import { JoinUs } from './pages/JoinUs';
+import JoinUs from './pages/JoinUs';
 import JoinUsSuccess from './pages/JoinUsSuccess';
 import Appointment from './pages/Appointment';
 import OrganizationDetails from './pages/OrganizationDetails';

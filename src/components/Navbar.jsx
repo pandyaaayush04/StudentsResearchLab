@@ -5,7 +5,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import JoinUsButton from './JoinUsButton';
 
 // Assets from public directory
-import srlLogo from "/SRL Logo.svg";
+import srlLogo from "/SRL.svg";
 const mmpsrpcLogo = "/mmpsrpc.png";
 const svkmLogo = "/svkm.png";
 const ksvLogo = "/ksv.png";
