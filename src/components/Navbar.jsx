@@ -3,7 +3,6 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import JoinUsButton from './JoinUsButton';
-import JoinUsModal from './JoinUsModal';
 
 // Using local SVG logo from public/src
 import srlLogo from "/SRL Logo.svg";
@@ -11,7 +10,6 @@ import srlLogo from "/SRL Logo.svg";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -44,7 +42,7 @@ const Navbar = () => {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-lg shadow-lg py-2' : 'bg-primary py-4'
+                className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-lg shadow-lg py-2' : 'bg-[#05877a] py-4'
                     }`}
             >
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,7 +92,7 @@ const Navbar = () => {
                         {/* Right: Actions & Partner Logos */}
                         <div className="hidden lg:flex items-center gap-4">
                             <div className="flex items-center gap-3">
-                                <JoinUsButton onClick={() => setIsModalOpen(true)} />
+                                <JoinUsButton onClick={() => navigate('/join')} />
                                 <NavLink
                                     to="/appointment"
                                     className={({ isActive }) =>
@@ -162,7 +160,7 @@ const Navbar = () => {
                                 ))}
 
                                 <div className="pt-6 space-y-4">
-                                    <JoinUsButton onClick={() => { setIsModalOpen(true); setIsOpen(false); }} className="w-full justify-center py-5" />
+                                    <JoinUsButton onClick={() => { navigate('/join'); setIsOpen(false); }} className="w-full justify-center py-5" />
                                     <NavLink
                                         to="/appointment"
                                         onClick={() => setIsOpen(false)}
@@ -189,7 +187,6 @@ const Navbar = () => {
                 </AnimatePresence>
             </nav>
 
-            <JoinUsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </>
     );
 };
