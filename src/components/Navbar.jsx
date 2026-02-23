@@ -75,10 +75,10 @@ const Navbar = () => {
 
                             {/* ACTION BUTTONS (Single Line) */}
                             <div className="flex items-center gap-4">
-                                {/* <JoinUsButton
+                                <JoinUsButton
                                     onClick={() => navigate('/join')}
                                     className="whitespace-nowrap px-8"
-                                /> */}
+                                />
                                 <NavLink
                                     to="/appointment"
                                     className={({ isActive }) =>
@@ -138,7 +138,7 @@ const Navbar = () => {
                                 ))}
 
                                 <div className="pt-6 space-y-4">
-                                    {/* <JoinUsButton onClick={() => { navigate('/join'); setOpen(false); }} className="w-full justify-center py-5" /> */}
+                                    <JoinUsButton onClick={() => { navigate('/join'); setOpen(false); }} className="w-full justify-center py-5" />
                                     <NavLink
                                         to="/appointment"
                                         onClick={() => setOpen(false)}
