@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import JoinUsButton from './JoinUsButton';
+// import JoinUsButton from './JoinUsButton';
 
 // Assets from public directory
 import srlLogo from "/SRL.svg";
@@ -75,10 +75,10 @@ const Navbar = () => {
 
                             {/* ACTION BUTTONS (Single Line) */}
                             <div className="flex items-center gap-4">
-                                <JoinUsButton
+                                {/* <JoinUsButton
                                     onClick={() => navigate('/join')}
                                     className="whitespace-nowrap px-8"
-                                />
+                                /> */}
                                 <NavLink
                                     to="/appointment"
                                     className={({ isActive }) =>
@@ -92,15 +92,9 @@ const Navbar = () => {
 
                             {/* PARTNER LOGOS */}
                             <div className="flex items-center gap-5 pl-8 border-l border-white/20 shrink-0">
-                                <Link to="/organization/svkm">
-                                    <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
-                                </Link>
-                                <Link to="/organization/ksv">
-                                    <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
-                                </Link>
-                                <Link to="/organization/mmpsrpc">
-                                    <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
-                                </Link>
+                                <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                                <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                                <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
                             </div>
                         </div>
 
@@ -138,7 +132,7 @@ const Navbar = () => {
                                 ))}
 
                                 <div className="pt-6 space-y-4">
-                                    <JoinUsButton onClick={() => { navigate('/join'); setOpen(false); }} className="w-full justify-center py-5" />
+                                    {/* <JoinUsButton onClick={() => { navigate('/join'); setOpen(false); }} className="w-full justify-center py-5" /> */}
                                     <NavLink
                                         to="/appointment"
                                         onClick={() => setOpen(false)}
