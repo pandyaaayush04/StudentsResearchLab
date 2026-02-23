@@ -102,7 +102,7 @@ export default function Researchers() {
     const chromaItems = useMemo(() => {
         return members.map((s) => ({
             id: s.enrollment_no || s.student_name.toLowerCase().replace(/\s+/g, "-"),
-            image: s.photo,
+            image: s.photo || "/students/schoolstudent.png",
             title: s.student_name,
             subtitle: `${s.department} • Semester ${s.semester}`,
             email: s.email || "",
@@ -166,7 +166,7 @@ export default function Researchers() {
                                         <button
                                             onClick={() => openModalFor({
                                                 id: ra.enrollment_no || ra.student_name.toLowerCase().replace(/\s+/g, "-"),
-                                                image: ra.photo,
+                                                image: ra.photo || "/students/schoolstudent.png",
                                                 title: ra.student_name,
                                                 subtitle: ra.department + " • Semester " + ra.semester,
                                                 reflection: ra.reflection || "",
@@ -178,7 +178,7 @@ export default function Researchers() {
                                             })}
                                             className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-500 group"
                                         >
-                                            <img src={ra.photo} alt={ra.student_name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                            <img src={ra.photo || "/students/schoolstudent.png"} alt={ra.student_name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                                             <div className="absolute inset-0 bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
                                                 <span className="text-[10px] text-white font-black uppercase tracking-widest bg-secondary px-3 py-1.5 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">See Profile</span>
                                             </div>
@@ -271,7 +271,7 @@ export default function Researchers() {
                                     <div className="relative">
                                         <div className="absolute inset-0 bg-secondary blur-3xl opacity-20 rounded-full" />
                                         <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-8 border-white shadow-2xl">
-                                            <img src={activeStudent.image} alt={activeStudent.title} className="w-full h-full object-cover" />
+                                            <img src={activeStudent.image || "/students/schoolstudent.png"} alt={activeStudent.title} className="w-full h-full object-cover" />
                                         </div>
                                     </div>
                                 </div>

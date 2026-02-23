@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SpotlightCard from '../SpotlightCard';
 
 const ChromaGrid = ({ items, onImageClick }) => {
+    const [loadedImages, setLoadedImages] = useState({});
+    const [failedImages, setFailedImages] = useState({});
+
+    useEffect(() => {
+        // Log all image paths for debugging
+        items.forEach((item, index) => {
+            console.log(`[${index}] ${item.title}: ${item.image}`);
+        });
+    }, [items]);
+
+    const handleImageLoad = (index) => {
+        setLoadedImages(prev => ({...prev, [index]: true}));
+    };
+
+    const handleImageError = (index, item) => {
+        console.error(`Failed to load image for ${item.title}:`, item.image);
+        setFailedImages(prev => ({...prev, [index]: true}));
+    };
+
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {items.map((item, index) => (
@@ -12,12 +31,20 @@ const ChromaGrid = ({ items, onImageClick }) => {
                 >
                     {/* Top: Image Section with Padding */}
                     <div className="p-4">
-                        <div className="aspect-square w-full rounded-2xl overflow-hidden shadow-sm border border-black/5">
-                            <img
-                                src={item.image}
-                                alt={item.title}
-                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
+                        <div className="aspect-square w-full rounded-2xl overflow-hidden shadow-sm border border-black/5 bg-gray-200">
+                            {!failedImages[index] && item.image ? (
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    onLoad={() => handleImageLoad(index)}
+                                    onError={() => handleImageError(index, item)}
+                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                            ) : (
+                                <div className="h-full w-full flex items-center justify-center bg-gray-300 text-gray-600 text-xs text-center p-2">
+                                    {!item.image ? 'No photo' : 'Image not found'}
+                                </div>
+                            )}
                         </div>
                     </div>
 

@@ -92,15 +92,9 @@ const Navbar = () => {
 
                             {/* PARTNER LOGOS */}
                             <div className="flex items-center gap-5 pl-8 border-l border-white/20 shrink-0">
-                                <Link to="/organization/svkm" className="transition-transform hover:scale-110">
-                                    <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                                </Link>
-                                <Link to="/organization/ksv" className="transition-transform hover:scale-110">
-                                    <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                                </Link>
-                                <Link to="/organization/mmpsrpc" className="transition-transform hover:scale-110">
-                                    <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                                </Link>
+                                <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                                <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                                <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
                             </div>
                         </div>
 

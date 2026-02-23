@@ -778,35 +778,6 @@
         ]
     },
     {
-        "student_name": "Hemant Pande",
-        "enrollment_no": "23BECE30493",
-        "department": "CE",
-        "semester": "6",
-        "division": "P",
-        "batch": "2023-2027",
-        "email": "hp926591@gmail.com",
-        "linkedin": "https://www.linkedin.com/in/hemant-pande926591/",
-        "photo": "/students/Pande Hemant Rameshwarkumar.jpeg",
-        "contact_no": "8780508139",
-        "member_type": "Head-Appointed",
-        "roles": [
-            "Student Member"
-        ],
-        "reflection": "SRL strengthened my disciplined research habits and critical evaluation skills. It refined my ability to maintain precision in outcomes.",
-        "research": [
-            "Information Theory",
-            "Data Compression"
-        ],
-        "researchWorks": [
-            "Huffman Architecture for Text",
-            "Image Compression Patterns"
-        ],
-        "achievements": [
-            "Algorithms Workshop Winner",
-            "Merit Scholar"
-        ]
-    },
-    {
         "student_name": "Henit Panchal",
         "enrollment_no": "23BECE30490",
         "department": "CE",
