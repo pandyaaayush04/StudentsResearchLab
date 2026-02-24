@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import JoinUsButton from './JoinUsButton';
 
 // Assets from public directory
 import srlLogo from "/SRL.svg";
@@ -34,73 +33,77 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#134E4A]/95 backdrop-blur-md shadow-lg h-[75px]' : 'bg-[#134E4A] h-[88px]'}`}>
-                <div className="max-w-[1536px] mx-auto px-4 sm:px-8 h-full font-sans">
-                    <div className="flex items-center h-full">
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-teal-800 via-teal-700 to-teal-600 shadow-lg sticky top-0 ${isScrolled ? 'py-2 lg:py-3 h-auto' : 'py-3 lg:py-4 h-auto'}`}>
+                {/* Cube pattern overlay */}
+                <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
 
-                        {/* LEFT — SRL Identity */}
-                        <Link to="/" className="flex items-center gap-3 shrink-0 group">
-                            <img
-                                src={srlLogo}
-                                alt="SRL"
-                                className="h-10 sm:h-12 object-contain group-hover:rotate-6 transition-transform"
-                            />
-                            <span className="hidden sm:block text-2xl font-black text-white tracking-tighter">
-                                SRL
-                            </span>
+                <div className="w-[98%] mx-auto relative z-10">
+                    <div className="flex justify-between items-center">
+                        {/* LEFT: Logo + Text */}
+                        <Link to="/" className="flex items-center flex-shrink-0 min-w-0 group">
+                            <div className="w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 bg-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 transition-all group-hover:scale-110 shadow-xl border-2 border-white/20">
+                                <img
+                                    src={srlLogo}
+                                    alt="SRL Logo"
+                                    className="w-10 h-10 lg:w-11 lg:h-11 xl:w-13 xl:h-13 object-contain"
+                                />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                                <h1 className="font-bold text-white hover:text-[#F8E7C1] transition duration-300 leading-tight">
+                                    <span className="text-sm sm:text-base lg:text-lg tracking-tight font-serif whitespace-nowrap">Students Research Lab (SRL)</span>
+                                </h1>
+                                <p className="text-[#F8E7C1] font-semibold leading-tight text-[10px] sm:text-xs lg:text-xs xl:text-sm font-sans uppercase tracking-[0.1em]">
+                                    MMPSRPC, Kadi Sarva Vishwavidyalaya
+                                </p>
+                            </div>
                         </Link>
 
-                        {/* RIGHT SECTION — TABS + BUTTONS + PARTNERS */}
-                        <div className="hidden xl:flex items-center ml-auto gap-8">
-                            {/* NAVIGATION TABS */}
-                            <div className="flex items-center gap-6">
+                        {/* CENTER: Navigation (Desktop) */}
+                        <div className="hidden lg:flex items-center justify-center flex-1 mx-4">
+                            <div className="flex items-center gap-1 xl:gap-2">
                                 {menuItems.map((item) => (
                                     <NavLink
                                         key={item.label}
                                         to={item.path}
                                         className={({ isActive }) =>
-                                            `relative font-bold text-[11px] uppercase tracking-widest transition-all hover:text-white whitespace-nowrap
-                                            ${isActive ? "text-white" : "text-white/80"}`
+                                            `block px-2 xl:px-4 py-2 font-medium transition-all duration-300 rounded-md whitespace-nowrap text-xs lg:text-[11px] xl:text-sm
+                                            ${isActive ? "bg-teal-700 text-white shadow-inner" : "text-white hover:bg-teal-700/50"}`
                                         }
                                     >
-                                        {({ isActive }) => (
-                                            <>
-                                                {item.label}
-                                                <div className={`absolute -bottom-1 left-0 h-[2px] bg-white transition-all duration-300 ${isActive ? 'w-full' : 'w-0'}`} />
-                                            </>
-                                        )}
+                                        {item.label}
                                     </NavLink>
                                 ))}
-                            </div>
 
-                            {/* ACTION BUTTONS (Single Line) */}
-                            <div className="flex items-center gap-4">
-                                <JoinUsButton
-                                    onClick={() => navigate('/join')}
-                                    className="whitespace-nowrap px-8"
-                                />
-                                <NavLink
-                                    to="/appointment"
-                                    className={({ isActive }) =>
-                                        `text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full transition-all border-2 whitespace-nowrap
-                                        ${isActive ? 'bg-white text-[#134E4A] border-white' : 'bg-transparent text-white border-white/30 hover:bg-white hover:text-[#134E4A] hover:border-white hover:shadow-lg'}`
-                                    }
+                                {/* Glow Button for Appointment */}
+                                <a
+                                    href="https://appointment.mmpsrpc.in/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="glow-button inline-flex items-center justify-center px-4 xl:px-6 py-2 text-teal-900 text-[10px] xl:text-xs font-black rounded-md ml-4 uppercase tracking-widest group/btn"
                                 >
-                                    SRL Appointment System
-                                </NavLink>
+                                    <span className="relative z-10 transition-colors group-hover/btn:text-teal-950">SRL Appointment System</span>
+                                    <div className="glow-effect"></div>
+                                </a>
+                                <span className="text-white/30 ml-4 hidden xl:block font-light">|</span>
                             </div>
+                        </div>
 
-                            {/* PARTNER LOGOS */}
-                            <div className="flex items-center gap-5 pl-8 border-l border-white/20 shrink-0">
-                                <img src={svkmLogo} alt="SVKM" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                                <img src={ksvLogo} alt="KSV" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                                <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-10 w-10 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                            </div>
+                        {/* RIGHT: Partner Logos (Desktop) */}
+                        <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
+                            <a href="https://www.ksv.ac.in/" target="_blank" rel="noopener noreferrer" className="flex-shrink-0 transition-transform hover:scale-110">
+                                <img src={ksvLogo} alt="KSV Logo" className="w-9 h-9 xl:w-12 xl:h-12 object-contain filter brightness-110" />
+                            </a>
+                            <a href="https://www.svkm.org.in/" target="_blank" rel="noopener noreferrer" className="flex-shrink-0 transition-transform hover:scale-110">
+                                <img src={svkmLogo} alt="SVKM Logo" className="w-8 h-10 xl:w-10 xl:h-12 object-contain filter brightness-110" />
+                            </a>
+                            <a href="/organization/mmpsrpc" className="flex-shrink-0 transition-transform hover:scale-110">
+                                <img src={mmpsrpcLogo} alt="MMPSRPC Logo" className="w-9 h-9 xl:w-12 xl:h-12 object-contain filter brightness-110" />
+                            </a>
                         </div>
 
                         {/* MOBILE MENU TOGGLE */}
                         <button
-                            className="xl:hidden ml-auto text-white p-2"
+                            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
                             onClick={() => setOpen((v) => !v)}
                         >
                             {open ? <X size={28} /> : <Menu size={28} />}
@@ -115,31 +118,40 @@ const Navbar = () => {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="xl:hidden bg-[#05877a] shadow-2xl overflow-hidden border-t border-white/10"
+                            className="lg:hidden bg-teal-800 shadow-2xl overflow-hidden border-t border-white/10 relative z-50 mt-2"
                         >
-                            <div className="flex flex-col px-6 py-8 gap-5">
+                            <div className="flex flex-col px-6 py-8 gap-4">
                                 {menuItems.map((item) => (
                                     <NavLink
                                         key={item.label}
                                         to={item.path}
                                         onClick={() => setOpen(false)}
                                         className={({ isActive }) =>
-                                            `text-base font-black uppercase tracking-widest transition-colors ${isActive ? "text-white" : "text-white/80 hover:text-white"}`
+                                            `text-sm font-bold uppercase tracking-widest px-4 py-3 rounded-xl transition-all
+                                            ${isActive ? "bg-teal-700 text-white" : "text-white/80 hover:text-white"}`
                                         }
                                     >
                                         {item.label}
                                     </NavLink>
                                 ))}
 
-                                <div className="pt-6 space-y-4">
-                                    <JoinUsButton onClick={() => { navigate('/join'); setOpen(false); }} className="w-full justify-center py-5" />
-                                    <NavLink
-                                        to="/appointment"
+                                <div className="pt-4 px-4">
+                                    <a
+                                        href="https://appointment.mmpsrpc.in/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         onClick={() => setOpen(false)}
-                                        className="block w-full bg-white text-[#05877a] text-center py-4 rounded-full font-black uppercase tracking-widest hover:bg-opacity-90 transition-all font-sans"
+                                        className="glow-button block w-full text-center py-4 rounded-xl font-black uppercase tracking-widest shadow-lg active:scale-95 transition-all text-xs text-teal-900 relative overflow-hidden"
                                     >
-                                        SRL Appointment System
-                                    </NavLink>
+                                        <span className="relative z-10">SRL Appointment System</span>
+                                        <div className="glow-effect"></div>
+                                    </a>
+                                </div>
+
+                                <div className="flex justify-center gap-8 py-6 border-t border-white/10 mt-4">
+                                    <img src={ksvLogo} className="h-10 w-10 object-contain brightness-125" alt="KSV" />
+                                    <img src={svkmLogo} className="h-10 w-10 object-contain brightness-125" alt="SVKM" />
+                                    <img src={mmpsrpcLogo} className="h-10 w-10 object-contain brightness-125" alt="MMPSRPC" />
                                 </div>
                             </div>
                         </motion.div>

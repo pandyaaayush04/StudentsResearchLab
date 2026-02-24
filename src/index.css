@@ -170,3 +170,65 @@
   background-size: 200% auto;
   animation: gradient-slow 8s linear infinite;
 }
+
+/* ===== GLOW BUTTON STYLES ===== */
+@property --a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-glow {
+  to {
+    --a: 1turn;
+  }
+}
+
+.glow-button {
+  background: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 8px 20px rgba(19, 78, 74, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(19, 78, 74, 0.1);
+}
+
+.glow-button:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(19, 78, 74, 0.25);
+  background: #fdfbf7;
+}
+
+.glow-effect {
+  position: absolute;
+  z-index: -1;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--a),
+      #0d9488,
+      /* Teal 600 */
+      #134e4a,
+      /* Teal 900 */
+      #facc15,
+      /* Gold/Yellow 400 */
+      #fef08a,
+      /* Gold/Yellow 200 */
+      #0d9488);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate-glow 3s linear infinite;
+  opacity: 0.8;
+}
+
+.glow-button:hover .glow-effect {
+  animation-duration: 1.5s;
+  opacity: 1;
+}
