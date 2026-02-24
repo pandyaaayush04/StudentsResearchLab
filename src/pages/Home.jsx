@@ -3,7 +3,6 @@ import Hero from '../components/Hero';
 import HeadSRL from '../components/HeadSRL';
 import Objectives from '../components/Objectives';
 import Timeline from '../components/Timeline';
-import About from '../components/About';
 
 const Home = () => {
     return (
@@ -17,8 +16,6 @@ const Home = () => {
             {/* 1. Hero Section */}
             <Hero />
 
-            {/* 2. Founders Section */}
-            <About />
 
             {/* 3. Head SRL Profile */}
             <HeadSRL />

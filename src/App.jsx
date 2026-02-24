@@ -13,6 +13,7 @@ import Background from './components/Background';
 import Home from './pages/Home';
 import Sessions from './pages/Sessions';
 import Achievements from './pages/Achievements';
+import Activities from './pages/Activities';
 import Researchers from './pages/Researchers';
 import LeaderBoard from './pages/LeaderBoard';
 import JoinUs from './pages/JoinUs';
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/sessions" element={<Sessions />} />
                 <Route path="/achievements" element={<Achievements />} />
+                <Route path="/activities" element={<Activities />} />
                 <Route path="/researchers" element={<Researchers />} />
                 <Route path="/leaderboard" element={<LeaderBoard />} />
                 <Route path="/join" element={<JoinUs />} />
