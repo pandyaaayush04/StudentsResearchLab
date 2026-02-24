@@ -13,16 +13,7 @@ const OrganizationDetails = () => {
 
     return (
         <div className="pt-[88px] min-h-screen" style={{ backgroundColor: '#F5F1E8' }}>
-            {/* Back Button */}
-            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-8">
-                <Link
-                    to="/"
-                    className="inline-flex items-center gap-2 text-slate-500 hover:text-secondary-dark transition-colors font-serif italic text-lg group"
-                >
-                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                    Back to Laboratory
-                </Link>
-            </div>
+
 
             {/* HERO SECTION */}
             <section className="relative py-16 px-6 sm:px-10 lg:px-14 overflow-hidden">
@@ -108,7 +99,7 @@ const OrganizationDetails = () => {
                             <div className="relative z-10">
                                 <div className="space-y-8">
                                     {data.description.map((paragraph, index) => (
-                                        <p key={index} className="text-slate-700 leading-relaxed text-lg sm:text-2xl font-light font-serif text-center italic">
+                                        <p key={index} className="text-slate-700 leading-relaxed text-lg sm:text-2xl font-light font-sans text-center">
                                             {paragraph}
                                         </p>
                                     ))}
@@ -140,7 +131,7 @@ const OrganizationDetails = () => {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                             </svg>
                                         </div>
-                                        <h4 className="text-4xl lg:text-5xl font-black text-secondary-dark mb-2 font-serif text-[#006d62]">
+                                        <h4 className="text-4xl lg:text-5xl font-black text-secondary-dark mb-2 font-sans text-[#006d62]">
                                             {stat.value}
                                         </h4>
                                         <p className="text-slate-500 font-bold text-xs uppercase tracking-[0.2em]">
@@ -165,8 +156,10 @@ const OrganizationDetails = () => {
                                     className="flex flex-col items-center"
                                 >
                                     <div className="text-center mb-16 relative">
-                                        <span className="text-[#d4af37] font-bold text-xs uppercase tracking-[0.4em] mb-4 block">{person.role}</span>
-                                        <h2 className="text-4xl lg:text-5xl font-black text-slate-800 font-serif leading-tight">{person.header}</h2>
+                                        {person.role && (
+                                            <span className="text-[#d4af37] font-bold text-xs uppercase tracking-[0.4em] mb-4 block">{person.role}</span>
+                                        )}
+                                        <h2 className="text-4xl lg:text-5xl font-black text-slate-800 font-sans leading-tight">{person.header}</h2>
                                         <div className="mt-4 h-[1px] w-24 bg-[#d4af37]/30 mx-auto" />
                                     </div>
 
@@ -186,7 +179,7 @@ const OrganizationDetails = () => {
                                             </div>
 
                                             <div className="text-center w-full px-4 mt-2">
-                                                <h4 className="text-2xl font-black text-slate-900 font-serif mb-1">{person.name}</h4>
+                                                <h4 className="text-2xl font-black text-slate-900 font-sans mb-1">{person.name}</h4>
                                                 <p className="text-xs text-secondary-dark font-bold uppercase tracking-[0.3em] font-sans">{person.designation}</p>
                                             </div>
                                         </div>
@@ -195,11 +188,11 @@ const OrganizationDetails = () => {
                                         <div className="flex-grow flex flex-col justify-center self-center lg:py-4">
                                             <div className="mb-8 flex items-start gap-4">
                                                 <svg className="w-10 h-10 text-[#d4af37]/20 shrink-0 rotate-180" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9C9 14.9381 9.68715 14.1802 10.4566 13.7915C10.8732 13.5811 11.017 13.0423 10.7496 12.656C10.4651 12.2452 9.8736 12.1895 9.53982 12.5645C8.01633 14.276 7 16.6433 7 19.5C7 20.3284 7.67157 21 8.5 21H14.017ZM21 21L21 18C21 16.8954 20.1046 16 19 16H15.983C15.983 14.9381 16.6702 14.1802 17.4396 13.7915C17.8562 13.5811 18 13.0423 17.7326 12.656C17.4481 12.2452 16.8566 12.1895 16.5228 12.5645C14.9993 14.276 13.983 16.6433 13.983 19.5C13.983 20.3284 14.6546 21 15.483 21H21Z" /></svg>
-                                                <p className="text-2xl lg:text-3xl italic text-slate-800 font-medium leading-relaxed font-serif">
+                                                <p className="text-2xl lg:text-3xl text-slate-800 font-medium leading-relaxed font-sans">
                                                     {person.mainQuote}
                                                 </p>
                                             </div>
-                                            <div className="space-y-6 lg:ml-14 text-slate-600 leading-relaxed font-light text-lg">
+                                            <div className="space-y-6 lg:ml-14 text-slate-600 leading-relaxed font-light text-lg font-sans text-justify">
                                                 {person.message.map((p, pIndex) => (
                                                     <p key={pIndex}>{p}</p>
                                                 ))}
@@ -213,7 +206,7 @@ const OrganizationDetails = () => {
                         <div className="mb-24 relative pt-12">
                             <div className="flex flex-col items-center mb-20">
                                 <span className="text-[#d4af37] font-bold text-xs uppercase tracking-[0.4em] mb-4">Dedicated to</span>
-                                <h2 className="text-4xl lg:text-5xl font-black text-slate-900 text-center font-serif">Honoring Our Founders</h2>
+                                <h2 className="text-4xl lg:text-5xl font-black text-slate-900 text-center font-sans">Honoring Our Founders</h2>
                                 <div className="mt-6 w-32 h-[1px] bg-[#d4af37]/40" />
                             </div>
 
@@ -242,11 +235,11 @@ const OrganizationDetails = () => {
                                             </div>
                                         </div>
 
-                                        <h3 className="text-3xl font-black text-slate-900 mb-6 font-serif">
+                                        <h3 className="text-3xl font-black text-slate-900 mb-6 font-sans">
                                             {founder.name}
                                         </h3>
 
-                                        <div className="italic text-slate-500 font-serif text-lg leading-relaxed text-center px-4 py-6 border-t border-b border-[#d4af37]/10 relative">
+                                        <div className="text-slate-500 font-sans text-lg leading-relaxed text-center px-4 py-6 border-t border-b border-[#d4af37]/10 relative">
                                             <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F5F1E8] px-3 text-[#d4af37]/40 font-serif text-3xl">“</span>
                                             {founder.quote}
                                             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#F5F1E8] px-3 text-[#d4af37]/40 font-serif text-3xl rotate-180">“</span>
@@ -272,9 +265,9 @@ const OrganizationDetails = () => {
                                         <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all duration-500">
                                             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                                         </div>
-                                        <h3 className="text-3xl font-black text-slate-900 font-serif tracking-tight">Mission</h3>
+                                        <h3 className="text-3xl font-black text-slate-900 font-sans tracking-tight">Mission</h3>
                                     </div>
-                                    <p className="text-slate-600 leading-relaxed text-xl font-light italic font-serif">{data.mission}</p>
+                                    <p className="text-slate-600 leading-relaxed text-xl font-light font-sans">{data.mission}</p>
                                 </motion.div>
                             )}
                             {data.vision && (
@@ -289,9 +282,9 @@ const OrganizationDetails = () => {
                                         <div className="w-16 h-16 rounded-2xl bg-[#d4af37]/10 flex items-center justify-center group-hover:bg-[#d4af37] group-hover:text-white transition-all duration-500">
                                             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                         </div>
-                                        <h3 className="text-3xl font-black text-slate-900 font-serif tracking-tight">Vision</h3>
+                                        <h3 className="text-3xl font-black text-slate-900 font-sans tracking-tight">Vision</h3>
                                     </div>
-                                    <p className="text-slate-600 leading-relaxed text-xl font-light italic font-serif">{data.vision}</p>
+                                    <p className="text-slate-600 leading-relaxed text-xl font-light font-sans">{data.vision}</p>
                                 </motion.div>
                             )}
                         </div>
@@ -301,12 +294,18 @@ const OrganizationDetails = () => {
                     {data.objectives && (
                         <div className="mb-32">
                             <div className="flex flex-col items-center mb-16 px-4">
-                                <span className="text-[#d4af37] font-bold text-xs uppercase tracking-[0.4em] mb-4">Strategic Framework</span>
-                                <h3 className="text-4xl md:text-5xl font-black text-slate-900 text-center font-serif tracking-tight">Institutional Objectives</h3>
+                                <h3 className="text-4xl md:text-5xl font-black text-slate-900 text-center font-sans tracking-tight mb-4">
+                                    {data.objectivesTitle || "Institutional Objectives"}
+                                </h3>
+                                {data.objectivesSubtitle && (
+                                    <p className="text-slate-600 font-sans text-lg lg:text-xl text-center max-w-3xl leading-relaxed">
+                                        {data.objectivesSubtitle}
+                                    </p>
+                                )}
                                 <div className="mt-8 h-[2px] w-48 bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent" />
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {data.objectives.map((obj, index) => (
                                     <motion.div
                                         key={index}
@@ -324,10 +323,10 @@ const OrganizationDetails = () => {
 
                                         <div className="w-4 h-4 rounded-full bg-[#d4af37]/30 mb-8 border border-[#d4af37]/50 group-hover:scale-125 transition-transform duration-500 shadow-[0_0_15px_rgba(212,175,55,0.2)]" />
 
-                                        <h4 className="text-2xl font-bold text-slate-800 mb-4 font-serif leading-snug group-hover:text-secondary-dark transition-colors duration-300">
+                                        <h4 className="text-2xl font-bold text-slate-800 mb-4 font-sans leading-snug group-hover:text-secondary-dark transition-colors duration-300">
                                             {obj.title}
                                         </h4>
-                                        <p className="text-slate-500 font-light leading-relaxed group-hover:text-slate-700">
+                                        <p className="text-slate-500 font-light leading-relaxed group-hover:text-slate-700 font-sans">
                                             {obj.description}
                                         </p>
                                     </motion.div>
@@ -340,7 +339,7 @@ const OrganizationDetails = () => {
                     {data.features && (
                         <div className="mb-32">
                             <div className="flex items-center gap-6 mb-16">
-                                <h3 className="text-3xl font-black text-slate-900 font-serif whitespace-nowrap tracking-tight">Distinguished Attributes</h3>
+                                <h3 className="text-3xl font-black text-slate-900 font-sans whitespace-nowrap tracking-tight">Features</h3>
                                 <div className="h-[1px] flex-grow bg-[#d4af37]/20" />
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -355,7 +354,7 @@ const OrganizationDetails = () => {
                                         className="bg-[#FAF8F3]/50 backdrop-blur-sm p-8 rounded-[2rem] border border-white shadow-sm hover:shadow-xl transition-all group flex items-center gap-6"
                                     >
                                         <div className="w-3 h-3 rounded-full bg-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.4)] group-hover:scale-150 transition-transform duration-500" />
-                                        <span className="font-bold text-slate-700 uppercase tracking-[0.2em] text-[11px] font-serif leading-none">{feature}</span>
+                                        <span className="font-bold text-slate-700 uppercase tracking-[0.2em] text-[11px] font-sans leading-none">{feature}</span>
                                     </motion.div>
                                 ))}
                             </div>
@@ -373,7 +372,7 @@ const OrganizationDetails = () => {
                         >
                             <div className="text-center mb-16 px-4">
                                 <span className="text-[#d4af37] font-bold text-xs uppercase tracking-[0.4em] mb-4 block">Connect With Us</span>
-                                <h2 className="text-4xl lg:text-5xl font-black text-slate-900 font-serif tracking-tight">Contact & Location</h2>
+                                <h2 className="text-4xl lg:text-5xl font-black text-slate-900 font-sans tracking-tight">Contact & Location</h2>
                                 <div className="mt-6 h-[1px] w-24 bg-[#d4af37]/30 mx-auto" />
                             </div>
 
@@ -387,7 +386,7 @@ const OrganizationDetails = () => {
                                             </div>
                                             <div>
                                                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#d4af37]/60 mb-2"> Location</p>
-                                                <p className="text-slate-800 text-lg leading-relaxed font-serif italic">{data.contact.address}</p>
+                                                <p className="text-slate-800 text-lg leading-relaxed font-sans italic">{data.contact.address}</p>
                                             </div>
                                         </div>
 
@@ -397,7 +396,7 @@ const OrganizationDetails = () => {
                                             </div>
                                             <div>
                                                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#d4af37]/60 mb-2"> Mail</p>
-                                                <a href={`mailto:${data.contact.email}`} className="text-xl font-serif text-secondary-dark hover:text-secondary hover:underline transition-all">
+                                                <a href={`mailto:${data.contact.email}`} className="text-xl font-sans text-secondary-dark hover:text-secondary hover:underline transition-all">
                                                     {data.contact.email}
                                                 </a>
                                             </div>
@@ -409,7 +408,7 @@ const OrganizationDetails = () => {
                                             </div>
                                             <div>
                                                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#d4af37]/60 mb-2">Contact Us</p>
-                                                <a href={`tel:${data.contact.phone.replace(/[^0-9+]/g, '')}`} className="text-xl font-serif text-secondary-dark hover:text-secondary hover:underline transition-all">
+                                                <a href={`tel:${data.contact.phone.replace(/[^0-9+]/g, '')}`} className="text-xl font-sans text-secondary-dark hover:text-secondary hover:underline transition-all">
                                                     {data.contact.phone}
                                                 </a>
                                             </div>

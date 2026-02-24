@@ -39,7 +39,7 @@ const About = () => {
                             </div>
 
                             {/* Info */}
-                            <h3 className="text-2xl font-black text-secondary mb-3 tracking-tight">
+                            <h3 className="text-2xl font-black text-secondary mb-3 tracking-tight font-serif">
                                 {founder.name}
                             </h3>
 

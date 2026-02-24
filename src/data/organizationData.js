@@ -113,7 +113,7 @@ export const organizationData = {
         vision: "Shaping the future of research through student-led innovation and global collaboration.",
         leadership: [
             {
-                role: "Chief Patron",
+                role: "",
                 header: "Message from Hon. Chairman Sir",
                 name: "Shri Vallabhbhai M. Patel",
                 designation: "Chairman, Sarva Vidyalaya Kelvani Mandal, Kadi & Gandhinagar. President, Kadi Sarva Vishwavidyalaya Gandhinagar.",
@@ -126,8 +126,8 @@ export const organizationData = {
                 ]
             },
             {
-                role: "Head, MMPSRPC",
-                header: "Message from the Head",
+                // role: "Head of MMPSRPC, KSV",
+                header: "Message from Head of MMPSRPC, KSV",
                 name: "Dr. Himani Trivedi",
                 designation: "Head of M. M. Patel Students Research Project Cell, KSV",
                 image: mamPhoto,
@@ -139,38 +139,32 @@ export const organizationData = {
                 ]
             }
         ],
+        objectivesTitle: "Goals",
+        objectivesSubtitle: "Cultivate a dynamic environment that inspires and supports student-driven research initiatives.",
         objectives: [
             {
-                title: "Research Excellence",
-                description: "Foster a culture of high-quality research and innovation among students."
+                title: "Nurture Fund Support",
+                description: "Create a welcoming environment that facilitates access to funds essential for students to pursue their research initiatives, high-impact research publications in top-tier journals across various disciplines."
             },
             {
-                title: "Critical Thinking",
-                description: "Develop analytical and critical thinking skills essential for groundbreaking research."
+                title: "Ensure Resource Accessibility",
+                description: "Make essential tools and materials readily available to empower students in the exploration of innovative ideas."
             },
             {
-                title: "Collaborative Research",
-                description: "Promote interdisciplinary collaboration and teamwork in research projects."
+                title: "Foster Inclusive Opportunities",
+                description: "Promote diversity by ensuring all students are welcomed and supported in their research endeavours."
             },
             {
-                title: "Innovation Catalyst",
-                description: "Stimulate cutting-edge ideas and transform them into impactful research outcomes."
+                title: "Assist with Research Dissemination",
+                description: "Offer support for students in navigating the publishing process and securing patents."
             },
             {
-                title: "Problem Solving",
-                description: "To equip students with advanced problem-solving skills for tackling complex research challenges."
+                title: "Encourage Collaboration",
+                description: "Cultivate a collaborative environment that encourages interdisciplinary projects, enhancing the quality of research."
             },
             {
-                title: "Research Grant",
-                description: "Provide support and guidance for securing research grants and funding opportunities."
-            },
-            {
-                title: "Industry Linkages",
-                description: "Strengthen relationships between student researchers and industry through consultancy projects, workshops, and collaborative innovations."
-            },
-            {
-                title: "Knowledge Dissemination",
-                description: "Assist students in publishing research papers, presenting findings at conferences, and contributing to the academic community."
+                title: "Recognize and Celebrate Achievements",
+                description: "Acknowledge and celebrate each research milestone to foster a culture of appreciation and motivation."
             }
         ],
         contact: {
