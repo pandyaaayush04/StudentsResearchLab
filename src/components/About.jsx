@@ -1,69 +1,200 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 import { organizationData } from '../data/organizationData';
+import { Link } from 'react-router-dom';
 
 const About = () => {
+    const [openAccordion, setOpenAccordion] = useState(null);
     const founders = organizationData?.svkm?.founders || [];
 
-    if (founders.length === 0) return null;
+    const toggleAccordion = (id) => {
+        setOpenAccordion(openAccordion === id ? null : id);
+    };
 
     return (
-        <section id="founders" className="py-28 bg-white relative overflow-hidden">
+        <section id="about" className="py-28 bg-[#FAF9F6] relative overflow-hidden">
             {/* Decorative Background Curves */}
             <div className="absolute inset-0 pointer-events-none opacity-20">
                 <svg className="w-full h-full" viewBox="0 0 1440 800" fill="none">
                     <path d="M-100 600 Q 360 200 720 600 T 1540 600" stroke="#00887b" strokeWidth="1" fill="none" className="opacity-10" />
                     <path d="M-100 200 Q 360 600 720 200 T 1540 200" stroke="#00887b" strokeWidth="1" fill="none" className="opacity-10" />
-                    <path d="M-100 400 Q 720 800 1540 400" stroke="#00887b" strokeWidth="0.5" fill="none" className="opacity-5" />
-                    <path d="M-100 400 Q 720 0 1540 400" stroke="#00887b" strokeWidth="0.5" fill="none" className="opacity-5" />
                 </svg>
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <h2 className="text-4xl md:text-5xl font-black text-slate-800 mb-20 text-center font-serif">
-                    Honoring Our Founders
-                </h2>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-20"
+                >
+                    <h2 className="text-4xl md:text-5xl font-black text-teal-900 mb-6 font-serif">
+                        About Us
+                    </h2>
+                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                        Building a legacy of excellence through dedicated research and academic mentorship under the guidance of our parent institutions.
+                    </p>
+                </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-16 lg:gap-24 max-w-5xl mx-auto">
-                    {founders.map((founder, index) => (
-                        <div key={index} className="flex flex-col items-center">
-                            {/* Portrait Frame */}
-                            <div className="mb-12 relative group">
-                                <div className="absolute inset-0 bg-slate-200 blur-2xl rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
-                                <div className="relative bg-white p-3 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-slate-100 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
-                                    <img
-                                        src={founder.image}
-                                        alt={founder.name}
-                                        className="w-56 md:w-64 h-auto block rounded-lg sepia-[0.2] group-hover:sepia-0 transition-all duration-700"
-                                    />
+                {/* ACCORDIONS FOR SVKM & KSV */}
+                <div className="max-w-4xl mx-auto mb-28 space-y-6">
+                    {/* SVKM Accordion */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-white rounded-[2rem] shadow-xl border border-teal-50 overflow-hidden hover:shadow-2xl transition-shadow duration-500"
+                    >
+                        <button
+                            onClick={() => toggleAccordion('svkm')}
+                            className="w-full px-8 py-8 flex items-center justify-between text-left group"
+                        >
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-teal-50/50 rounded-2xl p-2 flex items-center justify-center group-hover:bg-teal-50 transition-colors">
+                                    <img src={organizationData.svkm.image} alt="SVKM" className="h-full object-contain" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold text-teal-900 font-sans">Sarva Vidyalaya Kelavani Mandal (SVKM)</h4>
+                                    <p className="text-xs text-teal-600 font-bold uppercase tracking-[0.2em] mt-1">Our Founding Trust</p>
                                 </div>
                             </div>
-
-                            {/* Info */}
-                            <h3 className="text-2xl font-black text-secondary mb-3 tracking-tight font-serif">
-                                {founder.name}
-                            </h3>
-
-                            <div className="flex items-start gap-3 max-w-xs justify-center relative">
-                                <svg
-                                    className="w-4 h-4 text-secondary/40 mt-1 flex-shrink-0 rotate-180"
-                                    fill="currentColor"
-                                    viewBox="0 0 24 24"
+                            <ChevronDown className={`w-6 h-6 text-teal-400 transition-transform duration-500 ${openAccordion === 'svkm' ? 'rotate-180' : ''}`} />
+                        </button>
+                        <AnimatePresence>
+                            {openAccordion === 'svkm' && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
                                 >
-                                    <path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9C9 14.9381 9.68715 14.1802 10.4566 13.7915C10.8732 13.5811 11.017 13.0423 10.7496 12.656C10.4651 12.2452 9.8736 12.1895 9.53982 12.5645C8.01633 14.276 7 16.6433 7 19.5C7 20.3284 7.67157 21 8.5 21H14.017ZM21 21L21 18C21 16.8954 20.1046 16 19 16H15.983C15.983 14.9381 16.6702 14.1802 17.4396 13.7915C17.8562 13.5811 18 13.0423 17.7326 12.656C17.4481 12.2452 16.8566 12.1895 16.5228 12.5645C14.9993 14.276 13.983 16.6433 13.983 19.5C13.983 20.3284 14.6546 21 15.483 21H21Z" />
-                                </svg>
-                                <p className="text-slate-500 italic font-medium leading-relaxed font-serif text-center text-base">
-                                    {founder.quote}
-                                </p>
-                                <svg
-                                    className="w-4 h-4 text-secondary/40 mt-1 flex-shrink-0"
-                                    fill="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9C9 14.9381 9.68715 14.1802 10.4566 13.7915C10.8732 13.5811 11.017 13.0423 10.7496 12.656C10.4651 12.2452 9.8736 12.1895 9.53982 12.5645C8.01633 14.276 7 16.6433 7 19.5C7 20.3284 7.67157 21 8.5 21H14.017ZM21 21L21 18C21 16.8954 20.1046 16 19 16H15.983C15.983 14.9381 16.6702 14.1802 17.4396 13.7915C17.8562 13.5811 18 13.0423 17.7326 12.656C17.4481 12.2452 16.8566 12.1895 16.5228 12.5645C14.9993 14.276 13.983 16.6433 13.983 19.5C13.983 20.3284 14.6546 21 15.483 21H21Z" />
-                                </svg>
+                                    <div className="px-8 pb-8 pt-2">
+                                        <div className="h-[1px] w-full bg-teal-50 mb-8" />
+                                        <div className="prose prose-slate max-w-none">
+                                            <p className="text-gray-600 leading-relaxed text-lg font-light text-justify italic">
+                                                “{organizationData.svkm.description[0]}”
+                                            </p>
+                                        </div>
+                                        <div className="mt-8 flex flex-wrap gap-3">
+                                            {organizationData.svkm.features.map((f, i) => (
+                                                <span key={i} className="px-4 py-1.5 bg-teal-50 text-[10px] font-black text-teal-700 rounded-full uppercase tracking-wider">{f}</span>
+                                            ))}
+                                        </div>
+                                        <div className="mt-8">
+                                            <Link to="/organization/svkm" className="inline-flex items-center gap-2 px-6 py-3 bg-teal-900 text-white rounded-full font-bold text-sm hover:bg-teal-800 transition-all shadow-lg hover:shadow-teal-900/20">
+                                                Learn More About SVKM <ExternalLink size={14} />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
+
+                    {/* KSV Accordion */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="bg-white rounded-[2rem] shadow-xl border border-teal-50 overflow-hidden hover:shadow-2xl transition-shadow duration-500"
+                    >
+                        <button
+                            onClick={() => toggleAccordion('ksv')}
+                            className="w-full px-8 py-8 flex items-center justify-between text-left group"
+                        >
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-teal-50/50 rounded-2xl p-2 flex items-center justify-center group-hover:bg-teal-50 transition-colors">
+                                    <img src={organizationData.ksv.image} alt="KSV" className="h-full object-contain" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold text-teal-900 font-sans">Kadi Sarva Vishwavidyalaya (KSV)</h4>
+                                    <p className="text-xs text-teal-600 font-bold uppercase tracking-[0.2em] mt-1">Our University</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                            <ChevronDown className={`w-6 h-6 text-teal-400 transition-transform duration-500 ${openAccordion === 'ksv' ? 'rotate-180' : ''}`} />
+                        </button>
+                        <AnimatePresence>
+                            {openAccordion === 'ksv' && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                >
+                                    <div className="px-8 pb-8 pt-2">
+                                        <div className="h-[1px] w-full bg-teal-50 mb-8" />
+                                        <div className="prose prose-slate max-w-none">
+                                            <p className="text-gray-600 leading-relaxed text-lg font-light text-justify italic">
+                                                “{organizationData.ksv.description[0]}”
+                                            </p>
+                                        </div>
+                                        <div className="mt-8 flex flex-wrap gap-3">
+                                            {organizationData.ksv.features.map((f, i) => (
+                                                <span key={i} className="px-4 py-1.5 bg-teal-50 text-[10px] font-black text-teal-700 rounded-full uppercase tracking-wider">{f}</span>
+                                            ))}
+                                        </div>
+                                        <div className="mt-8">
+                                            <Link to="/organization/ksv" className="inline-flex items-center gap-2 px-6 py-3 bg-teal-900 text-white rounded-full font-bold text-sm hover:bg-teal-800 transition-all shadow-lg hover:shadow-teal-900/20">
+                                                Explore KSV University <ExternalLink size={14} />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
+                </div>
+
+                {/* FOUNDERS SECTION */}
+                <div className="pt-20 border-t border-teal-50">
+                    <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-3xl md:text-4xl font-black text-teal-900 mb-20 text-center font-serif"
+                    >
+                        Honoring Our Founders
+                    </motion.h3>
+
+                    <div className="grid md:grid-cols-2 gap-16 lg:gap-24 max-w-5xl mx-auto">
+                        {founders.map((founder, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.7, delay: index * 0.2 }}
+                                className="flex flex-col items-center group"
+                            >
+                                {/* Portrait Frame */}
+                                <div className="mb-12 relative">
+                                    <div className="absolute inset-0 bg-teal-200/40 blur-2xl rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-700" />
+                                    <div className="relative bg-white p-4 rounded-3xl shadow-xl border border-teal-50 overflow-hidden transform group-hover:-translate-y-3 transition-transform duration-700">
+                                        <img
+                                            src={founder.image}
+                                            alt={founder.name}
+                                            className="w-56 md:w-64 h-auto block rounded-2xl sepia-[0.2] group-hover:sepia-0 transition-all duration-1000 scale-105 group-hover:scale-110"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Info */}
+                                <h4 className="text-2xl font-black text-teal-900 mb-4 tracking-tight font-serif text-center">
+                                    {founder.name}
+                                </h4>
+
+                                <div className="text-teal-600 italic font-medium leading-relaxed font-serif text-center px-10 py-6 border-t border-b border-teal-50 relative">
+                                    <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FAF9F6] px-4 font-serif text-4xl text-teal-100">“</span>
+                                    {founder.quote}
+                                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#FAF9F6] px-4 font-serif text-4xl text-teal-100 rotate-180">“</span>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

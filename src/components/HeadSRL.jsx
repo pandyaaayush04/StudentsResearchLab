@@ -6,9 +6,9 @@ export default function HeadSRL() {
     return (
         <section className="relative py-28 overflow-hidden bg-white">
             {/* Ambient MVPBlocks accents */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute -top-40 -left-40 w-lg h-128 bg-[#05877a]/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 right-0 w-[24rem] h-96 bg-[#05877a]/10 rounded-full blur-3xl" />
+            <div className="absolute inset-0 pointer-events-none text-[#05877a]/5">
+                <div className="absolute -top-40 -left-40 w-lg h-128 bg-teal-50/50 rounded-full blur-3xl opacity-60" />
+                <div className="absolute bottom-0 right-0 w-[24rem] h-96 bg-teal-100/40 rounded-full blur-3xl opacity-40" />
             </div>
 
             <div className="relative max-w-6xl mx-auto px-6">
@@ -19,7 +19,7 @@ export default function HeadSRL() {
                     transition={{ duration: 0.7, ease: "easeOut" }}
                     className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center
                      bg-white rounded-3xl md:rounded-[2.75rem]
-                     shadow-[0_50px_100px_rgba(5,135,122,0.25)]
+                     shadow-[0_50px_100px_rgba(5,135,122,0.1)]
                      p-6 md:p-10 lg:p-16"
                 >
                     {/* LEFT – MESSAGE */}
@@ -32,10 +32,14 @@ export default function HeadSRL() {
                             M. M. Patel Students Research Project Cell, Kadi Sarva Vishwavidyalaya
                         </h2>
 
-                        <blockquote className="pl-6 border-l-4 border-[#05877a] italic text-base md:text-lg text-gray-700 mb-8 font-serif">
-                            Aspirations, curiosity, excellence, and dedication form the
-                            foundation of SRL — a space created to nurture disciplined,
-                            research-driven minds.
+                        <blockquote className="relative pl-10 italic text-base md:text-lg text-gray-700 mb-8 font-serif sm:pr-12 leading-relaxed">
+                            <span className="absolute -top-3 left-0 text-3xl text-[#05877a]/20 select-none italic">“</span>
+                            <div className="inline">
+                                Aspirations, curiosity, excellence, and dedication form the
+                                foundation of SRL — a space created to nurture disciplined,
+                                research-driven minds.
+                                <span className="inline text-3xl text-[#05877a]/20 ml-1 italic leading-none">”</span>
+                            </div>
                         </blockquote>
 
                         <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-6 font-sans">
@@ -75,7 +79,7 @@ export default function HeadSRL() {
 
                     {/* RIGHT – PORTRAIT */}
                     <div className="relative flex justify-center order-1 lg:order-2">
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-[#05877a]/10 flex items-center justify-center">
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-teal-50 flex items-center justify-center">
                             <div className="absolute inset-0 rounded-full border-[10px] md:border-[14px] border-white shadow-xl" />
                             <img
                                 src={mamPhoto}

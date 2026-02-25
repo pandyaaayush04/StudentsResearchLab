@@ -16,7 +16,6 @@ const Home = () => {
             {/* 1. Hero Section */}
             <Hero />
 
-
             {/* 3. Head SRL Profile */}
             <HeadSRL />
 

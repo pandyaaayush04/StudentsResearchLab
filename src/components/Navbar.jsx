@@ -33,8 +33,8 @@ const Navbar = () => {
     ];
 
     const institutionalLinks = [
-        { label: "SVKM", path: "https://www.svkm.org.in/", isExternal: true },
-        { label: "KSV", path: "https://www.ksv.ac.in/", isExternal: true },
+        { label: "SVKM", path: "/organization/svkm", isExternal: false },
+        { label: "KSV", path: "/organization/ksv", isExternal: false },
         { label: "MMPSRPC", path: "/organization/mmpsrpc", isExternal: false },
     ];
 
@@ -123,7 +123,7 @@ const Navbar = () => {
                         <a href="https://www.ksv.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
                             <img src={ksvLogo} alt="KSV" className="h-9 xl:h-10 2xl:h-14 w-auto object-contain" />
                         </a>
-                        <a href="/organization/mmpsrpc" className="hover:scale-110 transition-transform duration-300">
+                        <a href="https://www.mmpsrpc.in/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
                             <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-9 xl:h-10 2xl:h-14 w-auto object-contain" />
                         </a>
                     </div>

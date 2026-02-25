@@ -7,7 +7,7 @@ const objectives = [
         title: "360° Development",
         description: "Cultivating well-rounded, future-ready achievers prepared for global challenges.",
         group: "Growth",
-        color: "bg-blue-50"
+        color: "bg-teal-50"
     },
     {
         id: "02",
@@ -21,7 +21,7 @@ const objectives = [
         title: "Hands-on Experience",
         description: "Practical experimentation and technical sessions for industry-relevant expertise.",
         group: "Technical",
-        color: "bg-amber-50"
+        color: "bg-teal-50"
     },
     {
         id: "04",

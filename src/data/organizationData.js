@@ -49,7 +49,7 @@ export const organizationData = {
         ],
         contact: {
             address: "Sarva Vidyalaya Campus, Behind Railway Station, Kadi - 382715, Gujarat, India",
-            email: "mail@svim.ac.in",
+            email: "info@svkm.org.in",
             phone: "+91 2764 242996",
             mapEmbed: "https://maps.google.com/maps?q=Sarva+Vidyalaya+Campus+Kadi&t=&z=15&ie=UTF8&iwloc=&output=embed"
         }
