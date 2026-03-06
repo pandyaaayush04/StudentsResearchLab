@@ -181,7 +181,7 @@ const Sessions = () => {
                   {session.title}
                 </h3>
 
-                <div className="max-h-0 opacity-0 group-hover:max-h-52 group-hover:opacity-100 transition-[max-height,opacity] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden will-change-[max-height,opacity]">
+                <div className="max-h-52 opacity-100 lg:max-h-0 lg:opacity-0 lg:group-hover:max-h-52 lg:group-hover:opacity-100 transition-[max-height,opacity] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden will-change-[max-height,opacity]">
                   <div className="text-xs text-slate-500 mt-2">
                     📅 {session.date}
                   </div>

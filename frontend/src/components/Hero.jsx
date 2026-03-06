@@ -13,7 +13,7 @@ export default function Hero() {
         {
             image: slide1,
             // Mobile: Center | Desktop: Top Right
-            align: "justify-center items-center text-center md:justify-start md:items-end md:text-right md:pt-32",
+            align: "justify-center items-center text-center md:justify-start md:items-end md:text-right md:pt-24 lg:pt-32",
         },
         {
             image: slide2,
@@ -34,25 +34,27 @@ export default function Hero() {
     }, [slides.length]);
 
     return (
-        <section id="top" className="relative min-h-[100svh] w-full overflow-hidden">
+        <section id="top" className="relative h-[80vh] lg:h-[85vh] w-full overflow-hidden flex items-center justify-center bg-slate-900">
 
             {/* ===== BACKGROUND SLIDES ===== */}
             {slides.map((slide, index) => (
-                <img
+                <div 
                     key={index}
-                    src={slide.image}
-                    alt="hero"
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${index === current ? "opacity-100" : "opacity-0"
-                        }`}
-                />
+                    className={`absolute inset-0 w-full h-full transition-all duration-[1200ms] ease-in-out ${index === current ? "opacity-100 z-10 scale-100" : "opacity-0 z-0 scale-105"}`}
+                >
+                    <img
+                        src={slide.image}
+                        alt="hero"
+                        className="w-full h-full object-cover object-center"
+                    />
+                    {/* Overlay for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+                </div>
             ))}
-
-            {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-black/40" />
 
             {/* ===== TEXT CONTAINER ===== */}
             <div
-                className={`absolute inset-0 flex flex-col px-4 sm:px-6 md:px-16 ${slides[current].align} transition-all duration-700`}
+                className={`absolute inset-0 z-20 flex flex-col px-4 sm:px-6 md:px-16 ${slides[current].align} transition-all duration-700 pointer-events-none`}
             >
                 <div className="max-w-3xl w-full">
 
@@ -79,7 +81,7 @@ export default function Hero() {
             </div>
 
             {/* ===== DOT INDICATORS ===== */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-30">
                 {slides.map((_, index) => (
                     <button
                         key={index}

@@ -165,7 +165,7 @@ const Card = ({ item, onClick }) => (
     layout
     transition={{ type: "spring", stiffness: 140, damping: 22 }}
     whileHover={{ y: -6 }}
-    onClick={onClick}
+    onClick={(e) => { e.stopPropagation(); onClick(); }}
     className="relative cursor-pointer rounded-3xl overflow-hidden border border-slate-200 shadow-sm bg-white group"
   >
     <div className="aspect-[4/3] overflow-hidden bg-white">
@@ -259,13 +259,13 @@ const Achievements = () => {
             layout
             onClick={() => setSelected(null)}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            className="grid lg:grid-cols-[380px_minmax(0,1fr)] gap-8 items-start"
+            className="grid grid-cols-1 lg:grid-cols-[minmax(280px,380px)_minmax(0,1fr)] gap-8 items-start"
           >
-            {/* LEFT */}
+            {/* LEFT — card list (hidden on mobile to prevent clustering, visible on lg+) */}
             <motion.div
               layout
               onClick={(e) => e.stopPropagation()}
-              className="space-y-6 self-start"
+              className="hidden lg:block space-y-6 self-start"
             >
               <Card
                 item={selected}
@@ -281,14 +281,14 @@ const Achievements = () => {
               ))}
             </motion.div>
 
-            {/* RIGHT DETAIL */}
+            {/* RIGHT DETAIL — full-width on mobile, right column on lg+ */}
             <motion.div
               layout
               onClick={(e) => e.stopPropagation()}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 120, damping: 18 }}
-              className="w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200"
+              className="w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 order-first lg:order-last"
             >
               <div className="aspect-[4/3] bg-white flex items-center justify-center overflow-hidden">
                 {selected.type === "image" ? (
@@ -324,30 +324,39 @@ const Achievements = () => {
                 )}
               </div>
 
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-slate-800 mb-2 font-serif">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-2 font-serif">
                   {selected.title}
                 </h3>
 
-                <div className="flex gap-3 mb-4 text-sm">
+                <div className="flex flex-wrap gap-3 mb-4 text-sm">
                   <span className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full">
                     {selected.category}
                   </span>
                   <span className="text-slate-500">{selected.date}</span>
                 </div>
 
-                <p className="text-slate-600 leading-relaxed mb-6">
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm sm:text-base">
                   {selected.description}
                 </p>
 
-                <a
-                  href={selected.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-3 rounded-xl font-semibold hover:bg-[#004182] transition"
-                >
-                  View on LinkedIn
-                </a>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={selected.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-3 rounded-xl font-semibold hover:bg-[#004182] transition"
+                  >
+                    View on LinkedIn
+                  </a>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setSelected(null); }}
+                    className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-5 py-3 rounded-xl font-semibold hover:bg-slate-200 transition lg:hidden"
+                  >
+                    ← Back to All
+                  </button>
+                </div>
               </div>
             </motion.div>
           </motion.div>

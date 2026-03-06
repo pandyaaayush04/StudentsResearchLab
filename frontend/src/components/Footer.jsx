@@ -35,7 +35,7 @@ const Footer = () => {
                             <img
                                 src="/SRL.svg"
                                 alt="Student Research Lab"
-                                className="h-14 scale-[1.90] mb-8"
+                                className="h-24 w-auto mb-4"
                             />
 
                             <p className="text-[#134E4A]/80 leading-relaxed text-xs max-w-[240px]">

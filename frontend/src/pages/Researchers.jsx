@@ -20,7 +20,7 @@ function StudentReflections() {
     }, []);
 
     return (
-        <section className="relative py-24 bg-[#0b0f0e] text-white overflow-hidden rounded-[3rem] my-16 mx-4 sm:mx-8">
+        <section className="relative py-24 bg-[#0b0f0e] text-white overflow-hidden rounded-2xl sm:rounded-[3rem] my-16 mx-4 sm:mx-8">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header */}
                 <div className="mb-16 text-center">
@@ -33,7 +33,7 @@ function StudentReflections() {
                 </div>
 
                 {/* Animated Container */}
-                <div className="relative h-[400px] overflow-hidden">
+                <div className="relative h-[280px] sm:h-[350px] lg:h-[400px] overflow-hidden">
                     {loading ? (
                         <div className="flex items-center justify-center h-full text-gray-500">
                             Loading reflections…
@@ -125,7 +125,7 @@ export default function Researchers() {
             exit={{ opacity: 0 }}
             className="pt-32 pb-40 min-h-screen bg-white"
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="mb-24 text-center">
                     <h1 className="text-5xl lg:text-7xl font-black font-serif text-slate-900 mb-6 tracking-tight leading-none">
@@ -253,7 +253,7 @@ export default function Researchers() {
                             initial={{ scale: 0.9, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            className="relative bg-white max-w-5xl w-full rounded-[3rem] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+                            className="relative bg-white max-w-5xl w-full rounded-2xl sm:rounded-[3rem] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
                         >
                             {/* Header Buttons */}
                             <div className="absolute top-6 right-6 z-20 flex gap-2">

@@ -9,7 +9,7 @@ const Appointment = () => {
             exit={{ opacity: 0 }}
             className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white min-h-screen"
         >
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-screen-2xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <h1 className="text-5xl lg:text-6xl font-black font-serif text-slate-900 mb-8 leading-tight">
@@ -38,9 +38,9 @@ const Appointment = () => {
                         </div>
                     </div>
 
-                    <div className="bg-primary/10 p-1 rounded-[3rem] shadow-2xl relative overflow-hidden group">
+                    <div className="bg-primary/10 p-1 rounded-2xl sm:rounded-[3rem] shadow-2xl relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-3xl -z-10" />
-                        <div className="bg-white rounded-[2.8rem] p-10 border border-white">
+                        <div className="bg-white rounded-xl sm:rounded-[2.8rem] p-6 sm:p-10 border border-white">
                             <h2 className="text-3xl font-bold font-serif text-slate-900 mb-8">Book Your Slot</h2>
 
                             <div className="space-y-6">

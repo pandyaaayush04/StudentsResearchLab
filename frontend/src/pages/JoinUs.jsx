@@ -97,8 +97,8 @@ export default function JoinUs() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 relative">
+    <div className="max-w-4xl mx-auto px-4 pt-24 pb-12">
+      <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-8 md:p-12 relative">
         {/* Close Button */}
         <button
           onClick={handleCancel}
