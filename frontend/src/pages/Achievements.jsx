@@ -223,7 +223,7 @@ const Achievements = () => {
   };
 
   return (
-    <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
+    <div className="pt-6 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
@@ -294,7 +294,7 @@ const Achievements = () => {
                 {selected.type === "image" ? (
                   <Swiper
                     modules={[Autoplay, Pagination]}
-                    autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                    autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true, }}
                     pagination={{ clickable: true }}
                     loop
                     className="w-full h-full"
