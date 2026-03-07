@@ -28,7 +28,7 @@ const Activities = () => {
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="min-h-screen pt-32 pb-20 px-4 bg-[#FDFDFD]"
+            className="min-h-screen pt-6 pb-20 px-4 bg-[#FDFDFD]"
         >
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-5xl font-black text-[#0D9488] mb-8">Activities</h1>

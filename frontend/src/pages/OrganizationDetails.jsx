@@ -12,7 +12,7 @@ const OrganizationDetails = () => {
     }
 
     return (
-        <div className="pt-[88px] min-h-screen relative overflow-hidden" style={{ backgroundColor: '#F5F1E8' }}>
+        <div className="pt-6 min-h-screen relative overflow-hidden" style={{ backgroundColor: '#F5F1E8' }}>
             {/* Subtle Ambient Depth */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white rounded-full blur-[150px] -mr-64 -mt-32" />
@@ -21,7 +21,7 @@ const OrganizationDetails = () => {
 
 
             {/* HERO SECTION */}
-            <section className="relative py-16 px-6 sm:px-10 lg:px-14 overflow-hidden">
+            <section className="relative pt-4 pb-12 px-6 sm:px-10 lg:px-14 overflow-hidden">
                 {/* Sparkle Pattern Overlay - Header Specific */}
                 <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4v-4H4v4H0v2h4v4h2v-4h4v-2H6zm30 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
 
@@ -33,7 +33,7 @@ const OrganizationDetails = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative mb-8"
+                        className="relative mb-4"
                     >
                         <motion.button
                             onClick={() => {
@@ -61,7 +61,7 @@ const OrganizationDetails = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-slate-900 mb-6 font-serif tracking-tight leading-tight max-w-7xl mx-auto px-4"
+                        className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-slate-900 mb-4 font-serif tracking-tight leading-tight max-w-7xl mx-auto px-4"
                     >
                         {data.title}
                     </motion.h1>
@@ -80,7 +80,7 @@ const OrganizationDetails = () => {
             </section>
 
             {/* CONTENT SECTION */}
-            <section className="pb-24 pt-12 px-6 sm:px-10 lg:px-14 relative">
+            <section className="pb-24 pt-4 px-6 sm:px-10 lg:px-14 relative">
                 {/* Soft Gradient Background Transition */}
                 <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#F5F1E8] to-transparent pointer-events-none" />
 

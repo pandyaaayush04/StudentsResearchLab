@@ -93,9 +93,8 @@ const ImageCarousel = ({ images }) => {
           key={i}
           src={img}
           alt=""
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-            i === index ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === index ? "opacity-100" : "opacity-0"
+            }`}
         />
       ))}
     </div>
@@ -114,7 +113,7 @@ const Sessions = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="pt-20 lg:pt-24 pb-40 px-4 sm:px-6 lg:px-8 bg-primary/20 min-h-screen"
+      className="pt-6 pb-40 px-4 sm:px-6 lg:px-8 bg-primary/20 min-h-screen"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -134,11 +133,10 @@ const Sessions = () => {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`px-6 py-2 rounded-full text-sm font-bold transition ${
-                activeTab === tab.key
+              className={`px-6 py-2 rounded-full text-sm font-bold transition ${activeTab === tab.key
                   ? "bg-secondary text-white shadow-md"
                   : "bg-white text-slate-600 hover:bg-slate-100"
-              }`}
+                }`}
             >
               {tab.label}
             </button>
