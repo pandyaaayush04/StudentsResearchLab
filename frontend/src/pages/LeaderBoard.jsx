@@ -68,13 +68,14 @@ const LeaderBoard = () => {
                 // Construct a score map: { "enrollment_no": total_points }
                 const scoreMap = {};
                 scoresData.records.forEach(record => {
-                    scoreMap[record.enrollment_no] = record.total_points;
+                    const normalized = String(record.enrollment_no || "").trim().toUpperCase();
+                    scoreMap[normalized] = record.total_points;
                 });
 
                 // Construct an attendance map for percentage calculation
                 const attendanceMap = {};
                 attendanceData.records.forEach(record => {
-                    const en = record.enrollment_no;
+                    const en = String(record.enrollment_no || "").trim().toUpperCase();
                     const date = record.date;
                     const hours = record.hours || 0;
                     
