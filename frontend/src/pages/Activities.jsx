@@ -12,7 +12,7 @@ const Activities = () => {
         const fetchActivities = async () => {
             setLoading(true);
             setError(null);
-            const { data, error } = await supabase.from('activity').select('*').order('date', { ascending: false });
+            const { data, error } = await supabase.from('activities').select('*');
             if (error) {
                 setError('Failed to load activities.');
                 setActivities([]);
@@ -46,9 +46,9 @@ const Activities = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {activities.map((act, i) => (
                             <div key={act.id || i} className="p-8 rounded-3xl bg-white shadow-xl border border-gray-100 hover:border-[#0D9488] transition-all group">
-                                <span className="text-[#0D9488] font-bold text-sm uppercase tracking-widest">{act.date}</span>
+                                <span className="text-[#0D9488] font-bold text-sm uppercase tracking-widest">{act.year || ''}</span>
                                 <h3 className="text-2xl font-bold mt-2 mb-4 group-hover:text-[#0D9488] transition-colors">{act.title}</h3>
-                                <p className="text-gray-500 leading-relaxed">{act.desc}</p>
+                                <p className="text-gray-500 leading-relaxed">{act.description}</p>
                             </div>
                         ))}
                     </div>

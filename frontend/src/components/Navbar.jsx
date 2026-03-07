@@ -168,16 +168,28 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* WRAPPER 3: RIGHT (Buttons & Partner Logos) */}
-                    <div className="flex items-center justify-end gap-x-2 xl:gap-x-4 shrink-0">
+                {/* WRAPPER 3: RIGHT (Buttons & Partner Logos) */}
+                <div className="flex items-center justify-end gap-x-2 xl:gap-x-4 shrink-0">
                         <div className="hidden lg:flex items-center gap-x-1.5 xl:gap-x-2">
-                            <Link to="/join" className="px-2.5 py-1.5 xl:px-3 xl:py-2 2xl:px-4 2xl:py-2.5 bg-gradient-to-br from-[#FCD34D] via-[#D97706] to-[#B45309] text-white font-black rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all text-[8px] xl:text-[9px] 2xl:text-[11px] whitespace-nowrap uppercase tracking-wider">
-                                Join Us
+                            <Link to="/join" className="relative px-4 py-2 bg-[#E6B800] text-white font-black rounded-full shadow-[0_2px_8px_0_rgba(0,0,0,0.10)] uppercase tracking-wider text-[10px] xl:text-[11px] 2xl:text-[13px] whitespace-nowrap overflow-hidden group">
+                                <span className="relative z-10">Join Us</span>
+                                {/* Shine Animation */}
+                                <span className="absolute left-[-75%] top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-80 animate-shine" />
+                                <style>{`
+                                    @keyframes shine {
+                                        0% { left: -75%; }
+                                        60% { left: 120%; }
+                                        100% { left: 120%; }
+                                    }
+                                    .animate-shine {
+                                        animation: shine 1.8s linear infinite;
+                                    }
+                                `}</style>
                             </Link>
-                            <a href="https://appointment.mmpsrpc.in/" target="_blank" rel="noopener noreferrer" className="px-2.5 py-1.5 xl:px-3 xl:py-2 2xl:px-4 2xl:py-2.5 bg-white text-[#0D9488] border border-teal-100 shadow-sm font-black rounded-full hover:scale-105 active:scale-95 transition-all text-[8px] xl:text-[9px] 2xl:text-[11px] whitespace-nowrap uppercase tracking-wider">
-                                Appointment
-                            </a>
-                        </div>
+                        <a href="https://appointment.mmpsrpc.in/" target="_blank" rel="noopener noreferrer" className="px-2.5 py-1.5 xl:px-3 xl:py-2 2xl:px-4 2xl:py-2.5 bg-white text-[#0D9488] border border-teal-100 shadow-sm font-black rounded-full hover:scale-105 active:scale-95 transition-all text-[8px] xl:text-[9px] 2xl:text-[11px] whitespace-nowrap uppercase tracking-wider">
+                            Appointment
+                        </a>
+                    </div>
 
                         {/* Partner logos only visible on xl+ */}
                         <div className="hidden xl:flex items-center gap-x-2 2xl:gap-x-4 border-l border-teal-900/10 pl-3 2xl:pl-6 shrink-0">
