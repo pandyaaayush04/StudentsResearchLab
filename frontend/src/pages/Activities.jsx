@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabaseClient';
 
-
 const Activities = () => {
     const [activities, setActivities] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -12,15 +11,21 @@ const Activities = () => {
         const fetchActivities = async () => {
             setLoading(true);
             setError(null);
-            const { data, error } = await supabase.from('activities').select('*');
+
+            const { data, error } = await supabase
+                .from('activities')
+                .select('*');
+
             if (error) {
                 setError('Failed to load activities.');
                 setActivities([]);
             } else {
                 setActivities(data || []);
             }
+
             setLoading(false);
         };
+
         fetchActivities();
     }, []);
 
@@ -28,31 +33,99 @@ const Activities = () => {
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="min-h-screen pt-6 pb-20 px-4 bg-[#FDFDFD]"
+            className="min-h-screen pt-10 pb-20 px-6 bg-gradient-to-b from-[#ecfeff] via-white to-white"
         >
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-5xl font-black text-[#0D9488] mb-8">Activities</h1>
-                <p className="text-xl text-gray-600 mb-12 max-w-2xl">
-                    Discover the various initiatives and events organized by Students Research Lab to foster a culture of innovation and excellence.
-                </p>
 
-                {loading ? (
-                    <div className="text-center text-gray-400 py-12">Loading activities...</div>
-                ) : error ? (
-                    <div className="text-center text-red-500 py-12">{error}</div>
-                ) : activities.length === 0 ? (
-                    <div className="text-center text-gray-400 py-12">No activities found.</div>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {activities.map((act, i) => (
-                            <div key={act.id || i} className="p-8 rounded-3xl bg-white shadow-xl border border-gray-100 hover:border-[#0D9488] transition-all group">
-                                <span className="text-[#0D9488] font-bold text-sm uppercase tracking-widest">{act.year || ''}</span>
-                                <h3 className="text-2xl font-bold mt-2 mb-4 group-hover:text-[#0D9488] transition-colors">{act.title}</h3>
-                                <p className="text-gray-500 leading-relaxed">{act.description}</p>
-                            </div>
-                        ))}
+                {/* Header */}
+                <div className="text-center mb-16">
+
+    <h1 className="text-5xl md:text-7xl font-extrabold text-[#0F172A] font-serif tracking-wide mb-6">
+        ACTIVITIES
+    </h1>
+
+    <p className="text-lg text-gray-600 max-w-xl mx-auto">
+        Discover the various initiatives and events organized by Students Research Lab
+        to foster a culture of innovation and excellence.
+    </p>
+
+</div>
+
+                {/* Loading */}
+                {loading && (
+                    <div className="text-center text-gray-400 py-20 text-lg">
+                        Loading activities...
                     </div>
                 )}
+
+                {/* Error */}
+                {error && (
+                    <div className="text-center text-red-500 py-20 text-lg">
+                        {error}
+                    </div>
+                )}
+
+                {/* No Data */}
+                {!loading && !error && activities.length === 0 && (
+                    <div className="text-center text-gray-400 py-20 text-lg">
+                        No activities found.
+                    </div>
+                )}
+
+                {/* Activities Grid */}
+                {!loading && !error && activities.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+                        {activities.map((act, i) => (
+
+                            <motion.div
+                                key={act.id || i}
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.15 }}
+                                className="
+                                p-8
+                                rounded-2xl
+                                bg-white
+                                shadow-lg
+                                border border-gray-100
+                                hover:shadow-2xl
+                                hover:-translate-y-2
+                                transition-all
+                                duration-300
+                                group
+                                relative
+                                overflow-hidden
+                                "
+                            >
+
+                                {/* Accent Bar */}
+                                <div className="absolute top-0 left-0 w-full h-1 bg-[#0D9488] opacity-0 group-hover:opacity-100 transition"></div>
+
+                                {/* Year */}
+                                {act.year && (
+                                    <span className="inline-block bg-[#0D9488]/10 text-[#0D9488] px-3 py-1 rounded-full text-xs font-semibold tracking-wider">
+                                        {act.year}
+                                    </span>
+                                )}
+
+                                {/* Title */}
+                                <h3 className="text-xl font-bold mt-4 mb-3 text-gray-800 group-hover:text-[#0D9488] transition-colors duration-200">
+                                    {act.title}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-gray-500 text-sm leading-relaxed">
+                                    {act.description}
+                                </p>
+
+                            </motion.div>
+
+                        ))}
+
+                    </div>
+                )}
+
             </div>
         </motion.div>
     );
