@@ -18,6 +18,7 @@ const STUDENT_PROFILES = [
     { name: "Yash Kumavat", enrollment: "24BECE30122", dept: "CE", semester: "4th", div: "B", batch: "2024-2028", image: encodeURI("/students/Yash Kumavat.jpeg"), attendance: 10 },
     { name: "Halvdadiya Rudr", enrollment: "24BECE30094", dept: "CE", semester: "4th", div: "B", batch: "2024-2028", image: encodeURI("/students/Halvdadiya Rudr.jpeg"), attendance: 10 },
     { name: "Gajjar Antra Ashvinkumar", enrollment: "24BECE30081", dept: "CE", semester: "4th", div: "B", batch: "2024-2028", image: encodeURI("/students/Gajjar Antra Ashvinkumar.jpeg"), attendance: 10 },
+    { name: "Jadeja Bhagyashree Vanrajsinh", enrollment: "24BECE30099", dept: "CE", semester: "4th", div: "B", batch: "2024-2028", image: encodeURI("/students/Jadeja Bhagyashree.jpeg"), attendance: 10 },
     { name: "Chavda Yashvi Surendrasinh", enrollment: "23BECE30036", dept: "CE", semester: "6th", div: "A", batch: "2023-2027", image: encodeURI("/students/Chavda Yashvi Surendrasinh.jpeg"), attendance: 3 },
     { name: "Devda Rachita Bharatsinh", enrollment: "23BECE30059", dept: "CE", semester: "6th", div: "A", batch: "2023-2027", image: encodeURI("/students/Devda Rachita Bharatsinh.jpeg"), attendance: 2 },
     { name: "Ghetiya Poojan Rahulbhai", enrollment: "25MECE30003", dept: "CE", semester: "1st", div: "J", batch: "2025-2027", image: encodeURI("/students/Ghetiya Poojan Rahulbhai.jpeg"), attendance: 2 },
@@ -70,11 +71,11 @@ const LeaderBoard = () => {
                 }
 
                 const { data: studentDetails, error: namesError } = await supabase
-                    .from("student_details")
+                    .from("students_details")
                     .select("enrollment_no, student_name");
 
                 if (namesError) {
-                    throw new Error(`Failed to fetch student_details: ${namesError.message}`);
+                    throw new Error(`Failed to fetch students_details: ${namesError.message}`);
                 }
                 
                 const attendanceData = await attendanceResponse.json();
