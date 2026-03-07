@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import HeadSRL from '../components/HeadSRL';
 import Objectives from '../components/Objectives';
 import Timeline from '../components/Timeline';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 const Home = () => {
     return (
@@ -69,6 +70,9 @@ const Home = () => {
                 </div>
 
             </section>
+
+            {/* Scroll to Top Button */}
+            <ScrollToTopButton />
         </motion.div>
     );
 };
