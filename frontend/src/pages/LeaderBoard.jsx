@@ -33,7 +33,7 @@ const STUDENT_PROFILES = [
     { name: "Padh Charmi Ketankumar", enrollment: "23BECE30144", dept: "CE", semester: "6th", div: "C", batch: "2023-2027", image: encodeURI("/students/Padh Charmi Ketankumar.jpeg"), attendance: 3 },
     { name: "Panchal Henit Shaileshbhai", enrollment: "23BECE30490", dept: "CE", semester: "6th", div: "P", batch: "2023-2027", image: encodeURI("/students/Panchal Henit Shaileshbhai.jpeg"), attendance: 8 },
     { name: "Pandya Aayush Viral", enrollment: "24BECE30541", dept: "CE", semester: "4th", div: "P", batch: "2024-2028", image: encodeURI("/students/Pandya Aayush Viral.jpeg"), attendance: 11 },
-    { name: "Parmar Mahi Nitinchandra", enrollment: "24BECE30548", dept: "CE", semester: "4th", div: "P", batch: "2024-2028", image: encodeURI("/students/Parmar Mahi Nitinchandra.webp"), attendance: 11 },
+    { name: "Parmar Mahi Nitinchandra", enrollment: "24BECE30548", dept: "CE", semester: "4th", div: "P", batch: "2024-2028", image: encodeURI("/students/Parmar Mahi Nitinchandra.jpeg"), attendance: 11 },
     { name: "Parva Kumar", enrollment: "22BECE30153", dept: "CE", semester: "8th", div: "C", batch: "2022-2026", image: encodeURI("/students/Parva Kumar.jpeg"), attendance: 1 },
     { name: "Pragati Varu", enrollment: "24BECE30436", dept: "CE", semester: "4th", div: "F", batch: "2024-2028", image: encodeURI("/students/Pragati Varu.jpeg"), attendance: 9 },
     { name: "Prem Raichura", enrollment: "224SBECE30059", dept: "CE", semester: "6th", div: "F", batch: "2023-2027", image: encodeURI("/students/Prem Raichura.jpeg"), attendance: 3 },
