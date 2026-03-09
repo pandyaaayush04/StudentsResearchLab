@@ -3,7 +3,6 @@ import Hero from '../components/Hero';
 import HeadSRL from '../components/HeadSRL';
 import Objectives from '../components/Objectives';
 import Timeline from '../components/Timeline';
-import ScrollToTopButton from '../components/ScrollToTopButton';
 import SplashCursor from '../components/react-bits/SplashCursor';
 import GradientText from '../components/react-bits/GradientText';
 
@@ -29,12 +28,12 @@ const Home = () => {
             <Timeline />
 
             {/* 5. Impact Metrics */}
-            <section id="impact" className="pt-12 pb-32 px-4 bg-[#0b1f35] relative overflow-hidden">
+            <section id="impact" className="pt-12 pb-32 px-4 bg-gradient-to-b from-secondary-light/90 via-[#eef9f7] to-secondary-light/70 relative overflow-hidden">
                 <SplashCursor />
                 <div className="max-w-7xl mx-auto text-center relative z-10">
                     <div className="mb-16">
                         <GradientText
-                            colors={["#16B29D", "#FFFFFF", "#16B29D", "#FFFFFF", "#16B29D"]}
+                            colors={["#006d62", "#00887b", "#16B29D", "#00887b", "#006d62"]}
                             animationSpeed={6}
                             showBorder={false}
                             className="text-4xl sm:text-6xl font-bold"
@@ -54,18 +53,18 @@ const Home = () => {
 
                             <div
                                 key={i}
-                                className="bg-white w-[230px] p-8 rounded-xl shadow-lg hover:-translate-y-2 transition duration-300"
+                                className="bg-white/95 border border-secondary/20 w-[230px] p-8 rounded-xl shadow-lg hover:-translate-y-2 transition duration-300"
                             >
 
-                                <div className="w-[60px] h-[60px] mx-auto rounded-xl bg-[#e8f6f5] flex items-center justify-center text-2xl">
+                                <div className="w-[60px] h-[60px] mx-auto rounded-xl bg-secondary-light flex items-center justify-center text-2xl">
                                     {stat.icon}
                                 </div>
 
-                                <div className="text-4xl font-bold text-[#1fa79b] mt-4">
+                                <div className="text-4xl font-bold text-secondary mt-4">
                                     {stat.value}
                                 </div>
 
-                                <div className="text-gray-600 mt-2 text-sm">
+                                <div className="text-text-muted mt-2 text-sm">
                                     {stat.label}
                                 </div>
 
@@ -78,9 +77,6 @@ const Home = () => {
                 </div>
 
             </section>
-
-            {/* Scroll to Top Button */}
-            <ScrollToTopButton />
         </motion.div>
     );
 };
