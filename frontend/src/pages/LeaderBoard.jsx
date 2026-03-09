@@ -60,11 +60,6 @@ const LeaderBoard = () => {
                     fetch(`${API_BASE}/api/srl_sessions`)
                 ]);
 
-<<<<<<< HEAD
-                if (!scoresResponse.ok || !attendanceResponse.ok || !srlResponse.ok) throw new Error("Failed to fetch backend data");
-
-                const scoresData = await scoresResponse.json();
-=======
                 if (!attendanceResponse.ok || !srlResponse.ok) throw new Error("Failed to fetch backend data");
 
                 const { data: debateScores, error: scoresError } = await supabase
@@ -82,8 +77,7 @@ const LeaderBoard = () => {
                 if (namesError) {
                     throw new Error(`Failed to fetch students_details: ${namesError.message}`);
                 }
-                
->>>>>>> b045e6ddc1daf9bcdbe56885cce42e171507beef
+
                 const attendanceData = await attendanceResponse.json();
                 const srlData = await srlResponse.json();
 
