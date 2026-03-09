@@ -6,9 +6,17 @@ from dotenv import load_dotenv
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://students-research-lab-srl.vercel.app")
 
-# Apply a DNS bypass monkeypatch for Supabase due to possible local ISP DNS blocks/NXDOMAINs
-# MUST be done before importing httpx so anyio picks up our patched getaddrinfo
+# Allow both production and local development origins
+origins = [
+    FRONTEND_URL,
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
 if SUPABASE_URL:
     try:
         supabase_host = urlparse(SUPABASE_URL).hostname
@@ -30,7 +38,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -47,7 +55,7 @@ HEADERS = {
 
 @app.get("/")
 def read_root():
-    return {"status": "API running with direct Supabase API connection ✅"}
+    return {"status": "StudentsResearchLab backend running"}
 
 @app.get("/api/attendance")
 async def get_all_attendance():
