@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 
@@ -98,6 +98,25 @@ const data = [
   },
   {
     id: 6,
+    title: "7 Teams from the Students Research Lab Shortlisted at INNOVAITION National Hackathon",
+    type: "image",
+    media: [
+      "/Achievements/DAU-InnovAItion-Hackathon-7-teams/img-1.jpg",
+      "/Achievements/DAU-InnovAItion-Hackathon-7-teams/img-2.jpg",
+      "/Achievements/DAU-InnovAItion-Hackathon-7-teams/img-3.jpg",
+      "/Achievements/DAU-InnovAItion-Hackathon-7-teams/img-4.jpg",
+      "/Achievements/DAU-InnovAItion-Hackathon-7-teams/img-5.jpg",
+      "/Achievements/DAU-InnovAItion-Hackathon-7-teams/img-6.jpg",
+      "/Achievements/DAU-InnovAItion-Hackathon-7-teams/img-7.jpg",
+    ],
+    date: "11th Jan 2026",
+    category: "Competition",
+    description:
+      "A proud moment for the MMPSRPC Students Research Lab (SRL) as 7 student teams have been shortlisted at “INNOVAITION – Shaping Future Innovators,” a national-level hackathon powered by Intuitive.ai in collaboration with Dhirubhai Ambani University (DAU).",
+    linkedin: "https://www.linkedin.com/posts/mmpsrpc_ksv-srl-mmpsrpc-activity-7419393479648206848-1bfv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+  },
+  {
+    id: 7,
     title: "Congratulations to Our Bright Minds 🎉",
     type: "image",
     media: [
@@ -110,7 +129,7 @@ const data = [
     linkedin: "https://www.linkedin.com/posts/mmpsrpc_ksv-ldrpitr-mmpsrpc-activity-7413814908217344000-JmvS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
   },
   {
-    id: 7,
+    id: 8,
     title: "Congratulations to Our Bright Minds 🎉",
     type: "image",
     media: [
@@ -123,7 +142,7 @@ const data = [
     linkedin: "https://www.linkedin.com/posts/mmpsrpc_ksv-researchexcellence-studentachievement-activity-7412352256806920192-MoVv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
   },
   {
-    id: 8,
+    id: 9,
     title: "National Research Representation 🌟",
     type: "image",
     media: [
@@ -141,6 +160,79 @@ const data = [
     description:
       "M. M. Patel Students Research Project Cell, KSV (MMPSRPC), Kadi Sarva Vishwavidyalaya, Gandhinagar, proudly shares that Students Research Lab (SRL) members from Vidush Somany Institute of Technology and Research, Kadi and LDRP ITR participated in the NASCENT MR – National Scientific Conference on Emerging Trends in Multidisciplinary Research 2025 held at Puducherry and organized by Vinayaka Mission's Research Foundation. The students successfully presented their accepted papers: “SHAP-Enhanced Outbreak Forecasting: Interpretable Multi-Modal Learning for Waterborne Disease Prediction” by Krish Patel (Presenter) and Jenish Sorathiya, and “Enhancing Data Mining Techniques for Identifying Health Risk Patterns in Underserved Populations” by Hemant Pande (Presenter) and Honey Modha, under the mentorship of Dr. Himani Trivedi. Their participation reflects KSV’s strong interdisciplinary research culture—heartiest congratulations to the teams and best wishes for their continued academic success 🚀✨.",
     linkedin: "https://www.linkedin.com/posts/mmpsrpc_ksv-svkm-mmpsrpc-activity-7407377566589759488-qigD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+  },
+  {
+    id: 10,
+    title: "Students Research Lab Researchers Publish AI Study at International Conference",
+    type: "image",
+    media: [
+      "/Achievements/Research-Paper-Publication-18-11-25/img-1.jpg",
+    ],
+    date: "18th November 2025",
+    category: "Research Paper Publish",
+    description:
+      "A proud research milestone for the M. M. Patel Students Research Project Cell – Students Research Lab (SRL) as student researchers successfully published their paper at the International Conference on Artificial Intelligence and Smart Technologies for Sustainability (AISTS) 2025, organized by Marwadi University, Rajkot. The research paper titled “Exploring AI's Influence on Human Thinking: Productivity, Learning, and Cognitive Skills in the Age of XAI” has been published in the IEEE Xplore Digital Library, reflecting the students’ dedication to meaningful research and innovation.",
+    linkedin: "https://www.linkedin.com/posts/mmpsrpc_ksv-svkm-mmpsrpc-activity-7398590758359912448-l4bb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+  },
+  {
+    id: 11,
+    title: "Research Paper Published in IEEE Xplore by Students Research Lab Researchers",
+    type: "image",
+    media: [
+      "/Achievements/Research-Paper-Publication-21-10-25/img-1.jpg",
+    ],
+    date: "21st October 2025",
+    category: "Research Paper Publish",
+    description:
+      "A proud research achievement for the M. M. Patel Students Research Project Cell – Students Research Lab (SRL) as student researchers successfully published their paper titled “TrafficEye: Intelligent Traffic Optimization Using Deep Learning Approach” in the IEEE Xplore Digital Library through the 2nd IEEE International Conference on Artificial Intelligence and Machine Vision (AIMV-2025). Guided by Dr. Himani Trivedi, the research explores the application of deep learning techniques to improve traffic management and optimization, contributing to smarter and more efficient urban mobility solutions. This accomplishment highlights the strong research culture, innovation, and collaborative learning environment fostered within the Students Research Lab, where students actively transform ideas into impactful technological research. 🚀🔬",
+    linkedin: "https://www.linkedin.com/posts/mmpsrpc_ksv-mmpsrpc-researchexcellence-activity-7389603335164743680-rS1B?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+  },
+  {
+    id: 12,
+    title: "Global Research Presentation at the 9th NYC Green School Conference 2025",
+    type: "image",
+    media: [
+      "/Achievements/Global-Recognition-9th-NYC/img-1.jpg",
+      "/Achievements/Global-Recognition-9th-NYC/img-2.jpg",
+      "/Achievements/Global-Recognition-9th-NYC/img-3.jpg",
+      "/Achievements/Global-Recognition-9th-NYC/img-4.jpg",
+      "/Achievements/Global-Recognition-9th-NYC/img-5.jpg",
+      "/Achievements/Global-Recognition-9th-NYC/img-6.jpg",
+    ],
+    date: "",
+    category: "Global Recognition",
+    description:
+      "A proud moment for the M. M. Patel Students Research Project Cell – Students Research Lab (SRL) as faculty and student researchers showcased their work at the 9th NYC Green School Conference 2025, organized by Green Mentors at the ILR School, Cornell University, New York. Representing LDRP Institute of Technology & Research, the researchers presented innovative work focused on sustainable construction, ethical AI in education, and AI-driven sustainability diagnostics for smart institutions. Their participation reflects the growing research culture and commitment to addressing global challenges through innovation and interdisciplinary thinking. This international platform provided an opportunity to contribute to meaningful discussions on sustainability, technology, and future-ready education, highlighting the impact of research emerging from the Students Research Lab. 🌍✨",
+    linkedin: "https://www.linkedin.com/posts/mmpsrpc_ksv-svkm-mmpsrpc-activity-7380831837272756224-XA7Q?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+  },
+  {
+    id: 13,
+    title: "Research Posters from Students Research Lab Selected for GTU National Finale",
+    type: "image",
+    media: [
+      "/Achievements/Research-Posters-19&20-9-25/img-1.jpg",
+      "/Achievements/Research-Posters-19&20-9-25/img-2.jpg",
+      "/Achievements/Research-Posters-19&20-9-25/img-3.jpg",
+      "/Achievements/Research-Posters-19&20-9-25/img-4.jpg",
+    ],
+    date: "19th & 20th September, 2025",
+    category: "Research Poster",
+    description:
+      "A proud moment for the M. M. Patel Students Research Project Cell – Students Research Lab (SRL) as student researchers have been selected for the finale of the National Poster Competition on AI Powered Research and Innovation, organized by Gujarat Technological University (GTU), Ahmedabad. The selected teams will present their innovative research posters at the national-level finale scheduled for 19–20 September 2025, showcasing their work on AI-driven student dropout analysis using machine learning and air pollution tracking through satellite and ground data fusion. Guided by Dr. Himani Trivedi, this achievement reflects the growing research culture, innovation mindset, and collaborative learning environment fostered within the Students Research Lab, where students actively transform ideas into impactful research contributions. 🚀🔬",
+    linkedin: "https://www.linkedin.com/posts/mmpsrpc_gtu-airesearch-studentinnovation-activity-7376116498777616385-VT7i?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+  },
+  {
+    id: 14,
+    title: "Research Paper Publication Achievement: Students Publish Paper in Springer Book Series",
+    type: "image",
+    media: [
+      "/Achievements/Research-Posters-8&9-11-24/img-1.jpg",
+    ],
+    date: "8th & 9th November 2024",
+    category: "Research Paper Publish",
+    description:
+      "A significant research milestone for the M. M. Patel Students Research Project Cell – Students Research Lab (SRL) as student researchers successfully published their paper titled “Improving Urban Road Safety: Enhancing Pedestrian Safety Through Automated Traffic Signal Control and Law Enforcement” in the Springer Lecture Notes in Networks and Systems (LNNS) book series – Data Science and Security. The research was presented at the International Conference on Data Science, Computation and Security 2024, highlighting innovative approaches to improving urban road safety through intelligent traffic signal control and enforcement mechanisms. Guided by Dr. Himani Trivedi, this achievement reflects the strong research culture, innovation, and application-driven learning nurtured within the Students Research Lab, where students actively contribute to impactful solutions addressing real-world challenges. 🚀🔬",
+    linkedin: "https://www.linkedin.com/posts/mmpsrpc_springer-researchpublication-datascience-activity-7368163507625746434-vjXc?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
   },
 ];
 
@@ -215,15 +307,31 @@ const Card = ({ item, onClick }) => (
 /* ================= MAIN ================= */
 const Achievements = () => {
   const [selected, setSelected] = useState(null);
+  const sectionRef = useRef(null);
+  const detailRef = useRef(null);
   const remaining = data.filter((d) => d.id !== selected?.id);
+  
+  useEffect(() => {
+  if (selected && detailRef.current) {
+    setTimeout(() => {
+      detailRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 300);
+  }
+}, [selected]);
 
   const handleSelect = (item) => {
-    setSelected(item);
-    fireConfetti();
-  };
+  setSelected(item);
+  fireConfetti();
+};
 
   return (
-    <div className="pt-6 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
+    <div
+  ref={sectionRef}
+  className="pt-6 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50"
+>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
@@ -284,12 +392,12 @@ const Achievements = () => {
             {/* RIGHT DETAIL — full-width on mobile, right column on lg+ */}
             <motion.div
               layout
+              ref={detailRef}
               onClick={(e) => e.stopPropagation()}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 120, damping: 18 }}
-              className="w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 order-first lg:order-last"
-            >
+              className="scroll-mt-28 w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 order-first lg:order-last"            >
               <div className="aspect-[4/3] bg-white flex items-center justify-center overflow-hidden">
                 {selected.type === "image" ? (
                   <Swiper

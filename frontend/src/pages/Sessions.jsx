@@ -5,30 +5,6 @@ import { useEffect, useState } from "react";
 const sessions = [
   {
     id: 1,
-    category: "learning",
-    title: "Written and Verbal Articulation of Algorithmic Concepts",
-    description:
-      "At the Students Research Lab under the M. M. Patel Students Research Project Cell, KSV (MMPSRPC), Kadi Sarva Vishwavidyalaya, Gandhinagar, an academic session focused on efficient analysis of recursive problems using structured and optimized approaches. Students solved advanced problem sets requiring quick evaluation and accurate case identification, showcasing how complex recurrences can be simplified through methodical thinking. Such application-driven learning strengthens analytical sharpness, improves performance under time constraints, and reinforces a results-oriented academic mindset 🚀💡.",
-    type: "video",
-    media: ["/Sessions/Articulation-of-Algorithmic-Concepts/video-3.mp4"],
-    linkedin:
-      "https://www.linkedin.com/posts/mmpsrpc_mmpsrpc-ksv-svkm-activity-7412364021376413696-DFUn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
-    date: "12th Feb 2026",
-  },
-  {
-    id: 2,
-    category: "learning",
-    title: "Algorithm Optimization Through Recurrence Analysis",
-    description:
-      "At the Students Research Lab under the M. M. Patel Students Research Project Cell, KSV (MMPSRPC), Kadi Sarva Vishwavidyalaya, Gandhinagar, students participated in an interactive session focused on algorithm optimization, applying concepts through discussion and collaborative teamwork. The activity strengthened their logical understanding and fostered a structured problem-solving approach. The Students Research Lab at KSV continues to cultivate a dynamic academic environment that sharpens minds and promotes 360° student development across disciplines 🚀💡.",
-    type: "video",
-    media: ["/Sessions/Algorithm-Optimization/video-1.mp4"],
-    linkedin:
-      "https://www.linkedin.com/posts/mmpsrpc_mmpsrpc-ksv-svkm-activity-7411274469664759809-rDsK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
-    date: "25th Feb 2026",
-  },
-  {
-    id: 3,
     category: "success",
     title:
       "Alumni Success Story - Shubham Kumar Chandravanshi (Deloitte), Dhruvkumar Patel (Myntra), Jay Patel (QloudX)",
@@ -41,7 +17,7 @@ const sessions = [
     date: "3rd Jan 2026",
   },
   {
-    id: 4,
+    id: 2,
     category: "success",
     title:
       "Alumni Success Story - Manan Darji (Google), Dhwani Jakhaniya (AMD)",
@@ -54,7 +30,43 @@ const sessions = [
     date: "27th Dec 2025",
   },
   {
+    id: 3,
+    category: "learning",
+    title: "Written and Verbal Articulation of Algorithmic Concepts",
+    description:
+      "At the Students Research Lab under the M. M. Patel Students Research Project Cell, KSV (MMPSRPC), Kadi Sarva Vishwavidyalaya, Gandhinagar, an academic session focused on efficient analysis of recursive problems using structured and optimized approaches. Students solved advanced problem sets requiring quick evaluation and accurate case identification, showcasing how complex recurrences can be simplified through methodical thinking. Such application-driven learning strengthens analytical sharpness, improves performance under time constraints, and reinforces a results-oriented academic mindset 🚀💡.",
+    type: "video",
+    media: ["/Sessions/Articulation-of-Algorithmic-Concepts/video-3.mp4"],
+    linkedin:
+      "https://www.linkedin.com/posts/mmpsrpc_mmpsrpc-ksv-svkm-activity-7412364021376413696-DFUn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+    date: "12th Feb 2026",
+  },
+  {
+    id: 4,
+    category: "learning",
+    title: "Algorithm Optimization Through Recurrence Analysis",
+    description:
+      "At the Students Research Lab under the M. M. Patel Students Research Project Cell, KSV (MMPSRPC), Kadi Sarva Vishwavidyalaya, Gandhinagar, students participated in an interactive session focused on algorithm optimization, applying concepts through discussion and collaborative teamwork. The activity strengthened their logical understanding and fostered a structured problem-solving approach. The Students Research Lab at KSV continues to cultivate a dynamic academic environment that sharpens minds and promotes 360° student development across disciplines 🚀💡.",
+    type: "video",
+    media: ["/Sessions/Algorithm-Optimization/video-1.mp4"],
+    linkedin:
+      "https://www.linkedin.com/posts/mmpsrpc_mmpsrpc-ksv-svkm-activity-7411274469664759809-rDsK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+    date: "25th Feb 2026",
+  },
+  {
     id: 5,
+    category: "learning",
+    title: "A Glimpse into the Research Culture at MMPSRPC Students Research Lab",
+    description:
+      "The MMPSRPC Students Research Lab at KSV fosters an environment where students move beyond routine academic learning and develop a strong research mindset. Through weekly discussions, spontaneous exercises, and collaborative interactions, students strengthen their analytical thinking, communication skills, and ability to explore ideas with depth.This culture of learning encourages curiosity, teamwork, and thoughtful exploration, helping students transform simple ideas into structured and meaningful academic work.",
+    type: "video",
+    media: ["/Sessions/Learning-Cullture-of-MMPSRPC-SRL/video-6.mp4"],
+    linkedin:
+      "https://www.linkedin.com/posts/mmpsrpc_mmpsrpc-ksv-studentsresearchlab-activity-7405172370459668481-6zQI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJiBFMBBjWJQ8FYFoDQDvjaardrEEtrUsI",
+    date: "",
+  },
+  {
+    id: 6,
     category: "success",
     title: "Alumni Success Story - Dhruvkumar Patel (Myntra)",
     description:
@@ -128,7 +140,7 @@ const Sessions = () => {
           {[
             { key: "all", label: "All Sessions" },
             { key: "learning", label: "Learning Sessions" },
-            { key: "success", label: "Success Stories" },
+            { key: "success", label: "Success Stories Sessions" },
           ].map((tab) => (
             <button
               key={tab.key}
