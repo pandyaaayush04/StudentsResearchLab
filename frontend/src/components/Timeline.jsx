@@ -38,7 +38,7 @@ const timelineSteps = [
   },
 ];
 
-const TimelineItem = ({ item, index, scrollRoot }) => {
+const TimelineItem = ({ item, index, scrollRoot, isLast }) => {
   const isEven = index % 2 === 0;
 
   return (
@@ -53,11 +53,11 @@ const TimelineItem = ({ item, index, scrollRoot }) => {
           transition: { staggerChildren: 0.15, delayChildren: 0.1 }
         }
       }}
-      className="relative flex items-center justify-center w-full mb-32 group px-4"
+      className={`relative flex items-center justify-center w-full group px-2 sm:px-6 ${isLast ? 'mb-24' : 'mb-32'}`}
     >
       {/* Center Track */}
       <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center top-0 bottom-[-150%]">
-        <div className="w-10 h-10 rounded-full bg-[#16B29D] flex items-center justify-center text-white shadow-lg z-10 border-4 border-white">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#16B29D] flex items-center justify-center text-white shadow-lg z-10 border-4 border-white">
           {item.icon}
         </div>
         {index < timelineSteps.length - 1 && (
@@ -68,7 +68,7 @@ const TimelineItem = ({ item, index, scrollRoot }) => {
       <div className="flex w-full items-center">
         {/* LEFT COMPONENT: Slides further left */}
         <motion.div 
-          className="w-1/2 pr-10 text-right"
+          className="w-1/2 pr-4 sm:pr-8 md:pr-10 text-right"
           variants={{
             hidden: { opacity: 0, x: 50 },
             visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, damping: 12 } }
@@ -76,11 +76,11 @@ const TimelineItem = ({ item, index, scrollRoot }) => {
         >
           {isEven ? (
             <div>
-              <h3 className="text-xl font-bold text-slate-800 leading-tight mb-1">{item.title}</h3>
-              <p className="text-sm text-slate-500 max-w-[240px] ml-auto leading-relaxed">{item.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-slate-800 leading-tight mb-1">{item.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-500 max-w-[240px] ml-auto leading-relaxed">{item.description}</p>
             </div>
           ) : (
-            <span className="text-4xl sm:text-5xl font-bold text-[#16B29D] tracking-tighter block leading-none">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#16B29D] tracking-tighter block leading-none">
               {item.step}
             </span>
           )}
@@ -88,7 +88,7 @@ const TimelineItem = ({ item, index, scrollRoot }) => {
 
         {/* RIGHT COMPONENT: Slides further right */}
         <motion.div 
-          className="w-1/2 pl-10 text-left"
+          className="w-1/2 pl-4 sm:pl-8 md:pl-10 text-left"
           variants={{
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, damping: 12 } }
@@ -96,11 +96,11 @@ const TimelineItem = ({ item, index, scrollRoot }) => {
         >
           {!isEven ? (
             <div>
-              <h3 className="text-xl font-bold text-slate-800 leading-tight mb-1">{item.title}</h3>
-              <p className="text-sm text-slate-500 max-w-[240px] leading-relaxed">{item.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-slate-800 leading-tight mb-1">{item.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-500 max-w-[240px] leading-relaxed">{item.description}</p>
             </div>
           ) : (
-            <span className="text-4xl sm:text-5xl font-bold text-[#16B29D] tracking-tighter block leading-none">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#16B29D] tracking-tighter block leading-none">
               {item.step}
             </span>
           )}
@@ -117,35 +117,31 @@ const Timeline = () => {
     <section id="timeline" className="py-12 px-4 md:px-8 bg-white relative overflow-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
       
       <div className="max-w-[1400px] mx-auto">
-        {/* Main Section Container with Border and Height Constraint */}
-        <div className="relative flex flex-col lg:flex-row bg-[#fdfdfd] border border-slate-200 rounded-[3rem] shadow-sm overflow-hidden h-[700px]">
+        <div className="relative flex flex-col lg:flex-row bg-white border border-slate-200 rounded-[3rem] shadow-sm overflow-hidden h-[900px] lg:h-[700px] z-10">
           
-          {/* Subtle decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#16B29D]/[0.02] rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          {/* Tree Layer - Now spans the entire container background */}
+          <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+            <Tree rootXPos={0.25} rootYPos={1.1} scale={0.8} />
+          </div>
 
-          {/* LEFT: STATIC HUB (Tree & Circle) */}
-          <div className="w-full lg:w-[45%] h-[300px] lg:h-full relative flex items-center justify-center p-8 bg-white/50 border-b lg:border-b-0 lg:border-r border-slate-100">
+          {/* LEFT: STATIC HUB (Central Hub) */}
+          <div className="w-full lg:w-[42%] h-[400px] lg:h-full relative flex flex-col items-center justify-center p-6 lg:p-8 z-10 bg-transparent">
             
-            {/* Animated Title above the tree */}
+            {/* Animated Title */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute top-8 left-0 right-0 z-20"
+              className="relative lg:absolute lg:top-8 left-0 right-0 z-20 mb-6 lg:mb-0"
             >
               <GradientText
-                colors={["#82C8C1", "#F5E6CC", "#82C8C1", "#F5E6CC"]}
-                animationSpeed={5}
-                className="text-4xl md:text-5xl font-black tracking-tighter"
+                colors={["#16B29D", "#FFD700", "#16B29D", "#FFD700"]}
+                animationSpeed={4}
+                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter drop-shadow-sm"
               >
                 Our Journey
               </GradientText>
             </motion.div>
-
-            {/* Tree Layer */}
-            <div className="absolute inset-0 z-0 opacity-40">
-              <Tree rootXPos={0.5} rootYPos={1.1} scale={0.7} />
-            </div>
 
             {/* Hub Circle */}
             <motion.div
@@ -195,7 +191,7 @@ const Timeline = () => {
           {/* RIGHT: SCROLLABLE TIMELINE */}
           <div 
             ref={scrollContainerRef}
-            className="w-full lg:w-[55%] h-full overflow-y-auto overflow-x-hidden relative scroll-smooth bg-white/30 backdrop-blur-[2px]"
+            className="w-full lg:w-[58%] h-full overflow-y-auto overflow-x-hidden relative scroll-smooth bg-transparent z-10"
             style={{ 
               scrollbarWidth: 'thin', 
               scrollbarColor: '#16B29D22 transparent' 
@@ -209,21 +205,20 @@ const Timeline = () => {
               #timeline div::-webkit-scrollbar-thumb:hover { background: #16B29D; }
             `}} />
 
-            <div className="py-24 lg:py-32 px-4">
+            <div className="pt-24 lg:pt-32 pb-0 px-4">
               {timelineSteps.map((item, index) => (
                 <TimelineItem 
                   key={index} 
                   item={item} 
                   index={index} 
                   scrollRoot={scrollContainerRef}
+                  isLast={index === timelineSteps.length - 1}
                 />
               ))}
-              
-              <div className="h-48" />
             </div>
 
-            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-transparent pointer-events-none z-20" />
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none z-20" />
+            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none z-20" />
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none z-20" />
           </div>
 
         </div>

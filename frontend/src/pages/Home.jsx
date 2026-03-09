@@ -32,12 +32,12 @@ const Home = () => {
 
             {/* 5. Impact Metrics */}
             <section id="impact" className="py-12 px-4 bg-white relative overflow-hidden">
-                <SplashCursor />
-                
+                {/* <SplashCursor /> */}
+
                 <div className="max-w-7xl mx-auto">
                     {/* Main Container matching the reference image style */}
                     <div className="bg-[#f2f9f7] rounded-[3.5rem] p-8 md:p-16 relative overflow-hidden border border-slate-100 shadow-sm">
-                        
+
                         {/* LEFT: Sparkles Background for the stats side */}
                         <div className="absolute left-0 top-0 w-1/2 h-full pointer-events-none">
                             <SparklesCore
@@ -53,13 +53,13 @@ const Home = () => {
 
                         {/* Subtle background pattern/texture */}
                         <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#05877a 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-                        
+
                         <div className="relative z-10 flex flex-col lg:flex-row items-stretch gap-12">
-                            
+
                             {/* LEFT: Impact Metrics Stats */}
                             <div className="w-full lg:w-5/12 flex flex-col justify-center">
                                 <div className="mb-10">
-                                    <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Impact Metrics</h2>
+                                    <h2 className="text-4xl md:text-5xl font-bold font-display bg-gradient-to-r from-[#05877a] via-[#3ec5b8] to-[#05877a] bg-clip-text text-transparent animate-gradient-slow mb-4">Impact Metrics</h2>
                                     <p className="text-slate-500 text-lg">Measurable outcomes of our commitment to excellence.</p>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -77,7 +77,7 @@ const Home = () => {
                                             viewport={{ once: true }}
                                             className="bg-white/70 backdrop-blur-sm border border-slate-200/50 p-6 rounded-3xl flex flex-col items-start group hover:bg-white transition-colors"
                                         >
-                                            <div className="text-3xl font-bold text-[#05877a] mb-1">
+                                            <div className="text-4xl md:text-5xl font-bold font-display text-[#05877a] mb-1">
                                                 {stat.value}
                                             </div>
                                             <div className="text-slate-500 text-sm font-medium">
@@ -88,36 +88,33 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            {/* RIGHT: Deep Teal Globe Card exactly like the image */}
+                            {/* RIGHT: Deep Teal Globe Card */}
                             <div className="w-full lg:w-7/12">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.6 }}
                                     viewport={{ once: true }}
-                                    className="relative h-[480px] md:h-[550px] overflow-hidden rounded-[3rem] bg-[#05877a] p-8 md:p-14 text-white shadow-2xl flex flex-col justify-start"
+                                    className="relative h-[480px] md:h-[550px] overflow-hidden rounded-[3rem] bg-gradient-to-br from-[#cef0ea] via-[#f2e4b3] to-white p-8 md:p-14 text-slate-800 shadow-xl border border-white/50 flex flex-col justify-start"
                                 >
-                                    <h3 className="relative z-20 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+                                    <h3 className="relative z-20 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-slate-800">
                                         Advancing <br />
                                         knowledge <br />
                                         through <br />
                                         innovative <br />
                                         research.
                                     </h3>
-                                    
-                                    <div className="absolute -right-24 -bottom-24 z-10 w-[450px] md:w-[600px] aspect-square flex items-center justify-center pointer-events-none">
+
+                                    <div className="absolute -right-20 -bottom-20 z-10 w-[500px] md:w-[650px] aspect-square flex items-center justify-center pointer-events-auto">
                                         <Suspense fallback={<div className="animate-pulse bg-white/10 rounded-full w-64 h-64" />}>
                                             <Earth
                                                 className="w-full h-full"
                                                 scale={1.2}
-                                                dark={1}
-                                                baseColor={[1, 1, 1]}
-                                                markerColor={[0.1, 0.7, 0.6]}
-                                                glowColor={[0.1, 0.8, 0.7]}
+                                                dark={0.8}
                                             />
                                         </Suspense>
                                     </div>
-                                    
+
                                     {/* Subtle Overlay Shine */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-30" />
                                 </motion.div>
