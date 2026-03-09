@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Trophy, Medal, Star, Target, Zap, Clock, TrendingUp, Users, Award, BookOpen, Crown, Search } from "lucide-react";
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient';
 
 // Single source of truth for student metadata. 
 // Scores will be fetched from backend and merged into these profiles.
@@ -52,127 +51,43 @@ const LeaderBoard = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchScores = async () => {
+        const fetchLeaderboard = async () => {
             try {
-                // Fetch attendance records from backend; scores/names from Supabase
-                const [attendanceResponse, srlResponse] = await Promise.all([
-                    fetch(`${API_BASE}/api/attendance`),
-                    fetch(`${API_BASE}/api/srl_sessions`)
-                ]);
+                // Single fetch to the aggregated leaderboard endpoint
+                const response = await fetch(`${API_BASE}/api/leaderboard`);
+                if (!response.ok) throw new Error("Failed to fetch leaderboard data");
 
-                if (!attendanceResponse.ok || !srlResponse.ok) throw new Error("Failed to fetch backend data");
+                const { leaderboard } = await response.json();
 
-                const { data: debateScores, error: scoresError } = await supabase
-                    .from("debate_scores")
-                    .select("enrollment_no, total_points");
-
-                if (scoresError) {
-                    throw new Error(`Failed to fetch debate_scores: ${scoresError.message}`);
-                }
-
-                const { data: studentDetails, error: namesError } = await supabase
-                    .from("students_details")
-                    .select("enrollment_no, student_name");
-
-                if (namesError) {
-                    throw new Error(`Failed to fetch students_details: ${namesError.message}`);
-                }
-
-                const attendanceData = await attendanceResponse.json();
-                const srlData = await srlResponse.json();
-
-                // Construct a score map: { "enrollment_no": total_points }
-                const scoreMap = {};
-                (debateScores || []).forEach(record => {
-                    const normalized = String(record.enrollment_no || "").trim().toUpperCase();
-                    scoreMap[normalized] = record.total_points || 0;
+                // Merge backend data with static STUDENT_PROFILES for images/metadata
+                const profileMap = {};
+                STUDENT_PROFILES.forEach(p => {
+                    profileMap[p.enrollment.trim().toUpperCase()] = p;
                 });
 
-                // Construct a name map from student_details
-                const nameMap = {};
-                (studentDetails || []).forEach(record => {
-                    const normalized = String(record.enrollment_no || "").trim().toUpperCase();
-                    nameMap[normalized] = record.student_name || "";
-                });
-
-                // Construct an attendance map for percentage calculation
-                const attendanceMap = {};
-                attendanceData.records.forEach(record => {
-                    const en = String(record.enrollment_no || "").trim().toUpperCase();
-                    const date = record.date;
-                    const hours = record.hours || 0;
-
-                    if (!attendanceMap[en]) attendanceMap[en] = { totalHours: 0, dailyHours: {} };
-
-                    attendanceMap[en].totalHours += hours;
-                    if (date) {
-                        attendanceMap[en].dailyHours[date] = (attendanceMap[en].dailyHours[date] || 0) + hours;
-                    }
-                });
-
-                // Build a Set of valid SRL Session dates for fast lookup
-                const srlDates = new Set(srlData.records.map(r => r.session_date).filter(Boolean));
-
-                // Merge static profiles with dynamic scores and attendance percentage
-                const mergedStudents = STUDENT_PROFILES.map((student, index) => {
-                    // Normalize the enrollment strings just in case 
-                    const studentEnrollment = student.enrollment.trim().toUpperCase();
-                    // Lookup score and percentage, default to 0 if not found
-                    const score = scoreMap[studentEnrollment] || 0;
-
-                    let percentage = 0;
-                    let srlPercentage = 0;
-                    const attData = attendanceMap[studentEnrollment];
-                    if (attData) {
-                        const dates = Object.keys(attData.dailyHours);
-                        const totalDays = dates.length;
-                        if (totalDays > 0) {
-                            const presentDays = dates.filter(d => attData.dailyHours[d] > 0).length;
-                            percentage = Math.round((presentDays / totalDays) * 100);
-                        }
-
-                        // Calculate SRL specific percentage based on inner join logic 
-                        const srlValidDates = dates.filter(d => srlDates.has(d));
-                        const totalSrlDays = srlValidDates.length;
-                        if (totalSrlDays > 0) {
-                            const presentSrlDays = srlValidDates.filter(d => attData.dailyHours[d] > 0).length;
-                            srlPercentage = Math.round((presentSrlDays / totalSrlDays) * 100);
-                        }
-                    }
-
+                const mergedStudents = leaderboard.map((student, index) => {
+                    const en = student.enrollment_no.trim().toUpperCase();
+                    const profile = profileMap[en] || {};
                     return {
-                        ...student,
-                        id: student.id || index + 1, // Fallback ID if not provided
-                        name: nameMap[studentEnrollment] || student.name,
-                        score: score,
-                        attendance: percentage, // Overwrite hardcoded static attribute
-                        srlAttendance: srlPercentage // Add SRL attribute
+                        ...profile,
+                        id: index + 1,
+                        enrollment: student.enrollment_no,
+                        name: student.name || profile.name || "Unknown Student",
+                        score: student.score || 0,
+                        attendance: student.attendance || 0,
+                        srlAttendance: student.srlAttendance || 0,
+                        rank: student.rank,
                     };
                 });
 
-                // Sort students descending by score, then by attendance hours
-                const sortedStudents = [...mergedStudents].sort((a, b) => {
-                    if (b.score !== a.score) {
-                        return b.score - a.score;
-                    }
-                    return b.attendance - a.attendance;
-                });
-
-                // Calculate Ranks and Handle Groups/Ties correctly
-                // Rank strictly increments for each student -> no shared ranks
-                const rankedStudents = sortedStudents.map((student, index) => ({
-                    ...student,
-                    rank: index + 1
-                }));
-
-                // Group the top 5 ranks for the TopPerformers visually identical array expectation
+                // Group the top 5 ranks for the TopPerformers podium
                 const tmpTopPerformers = [];
                 for (let r = 1; r <= 5; r++) {
-                    const studentsMatchingRank = rankedStudents.filter(s => s.rank === r);
+                    const studentsMatchingRank = mergedStudents.filter(s => s.rank === r);
                     if (studentsMatchingRank.length > 0) {
                         tmpTopPerformers.push({
                             rank: r,
-                            points: studentsMatchingRank[0].score, // They all have same point value in a tier
+                            points: studentsMatchingRank[0].score,
                             students: studentsMatchingRank
                         });
                     }
@@ -181,22 +96,22 @@ const LeaderBoard = () => {
                 setTopPerformers(tmpTopPerformers);
 
                 // Group the rest (Rank 4 and beyond, to show 4 & 5 on mobile list)
-                const restOfTheStudents = rankedStudents.filter(s => s.rank >= 4);
+                const restOfTheStudents = mergedStudents.filter(s => s.rank >= 4);
                 setRegularPerformers(restOfTheStudents);
                 setLoading(false);
 
             } catch (error) {
                 console.error("Error building leaderboard:", error);
 
-                // Fallback rendering incase backend is down: rank all 0
-                const fallbackStudents = STUDENT_PROFILES.map((s, i) => ({ ...s, id: i + 1, score: 0, rank: 1, attendance: 0 }));
+                // Fallback rendering in case backend is down: rank all 0
+                const fallbackStudents = STUDENT_PROFILES.map((s, i) => ({ ...s, id: i + 1, score: 0, rank: 1, attendance: 0, srlAttendance: 0 }));
                 setTopPerformers([{ rank: 1, points: 0, students: fallbackStudents.slice(0, 5) }]);
                 setRegularPerformers(fallbackStudents.slice(3));
                 setLoading(false);
             }
         };
 
-        fetchScores();
+        fetchLeaderboard();
     }, []);
     const getRankStyles = (rank) => {
         // Fallback for ranks 6 and beyond or unhandled cases
