@@ -77,7 +77,7 @@ const Home = () => {
                                             viewport={{ once: true }}
                                             className="bg-white/70 backdrop-blur-sm border border-slate-200/50 p-6 rounded-3xl flex flex-col items-start group hover:bg-white transition-colors"
                                         >
-                                            <div className="text-4xl md:text-5xl font-bold font-display text-[#05877a] mb-1">
+                                            <div className="text-5xl font-bold font-display text-teal-800 mb-2">
                                                 {stat.value}
                                             </div>
                                             <div className="text-slate-500 text-sm font-medium">
