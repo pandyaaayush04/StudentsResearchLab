@@ -99,64 +99,65 @@ const Navbar = () => {
                 <div className="max-w-[1600px] mx-auto w-full flex items-center justify-between px-4 lg:px-6 xl:px-8">
 
                     {/* WRAPPER 1: LEFT (Logo & Site Title) */}
-                    <div className="flex items-center gap-2 lg:gap-3 shrink min-w-0">
-                        <Link to="/" className="flex items-center gap-2 lg:gap-3 group min-w-0">
-                            <div className="w-10 h-10 lg:w-11 lg:h-11 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 bg-white rounded-full p-0.5 lg:p-1 2xl:p-1.5 flex items-center justify-center shadow-md shrink-0 transition-transform group-hover:scale-105">
-                                <img src={srlLogo} alt="SRL" className="w-full h-full object-contain" />
-                            </div>
-                            <div className="flex flex-col min-w-0">
-                                <h1 className="text-teal-900 font-serif font-bold text-[10px] lg:text-[11px] xl:text-[12px] 2xl:text-[14px] tracking-tight leading-none whitespace-nowrap">
-                                    Students Research Lab <span className="text-teal-600">(SRL)</span>
-                                </h1>
-                                <p className="text-teal-800/80 font-sans font-semibold text-[7px] lg:text-[7px] xl:text-[8px] 2xl:text-[9px] uppercase tracking-[0.14em] whitespace-nowrap">
-                                    MMPSRPC, Kadi Sarva Vishwavidyalaya
-                                </p>
-                            </div>
-                        </Link>
-                    </div>
+                    <Link to="/" className="flex items-center gap-2 lg:gap-3 group shrink min-w-0">
+                        <div className="w-[52px] h-[52px] lg:w-[56px] lg:h-[56px] xl:w-[70px] xl:h-[70px] -my-[6px] lg:-my-[8px] xl:-my-[11px] bg-white rounded-full p-1 lg:p-1.5 flex items-center justify-center shadow-md shrink-0 transition-transform group-hover:scale-105">
+                            <img src={srlLogo} alt="SRL" className="w-full h-full object-contain" />
+                        </div>
+                        <div className="flex flex-col justify-center min-w-0">
+                            <h1 className="text-teal-900 font-serif font-bold text-[12px] md:text-[14px] lg:text-[13px] xl:text-[16px] tracking-tight leading-tight whitespace-nowrap m-0">
+                                Students Research Lab <span className="text-teal-600">(SRL)</span>
+                            </h1>
+                            <p className="text-teal-800/80 font-sans font-semibold text-[8px] md:text-[9px] lg:text-[8px] xl:text-[10px] uppercase tracking-[0.14em] whitespace-nowrap leading-tight m-0">
+                                MMPSRPC, Kadi Sarva Vishwavidyalaya
+                            </p>
+                        </div>
+                    </Link>
 
                     {/* WRAPPER 2: CENTER-RIGHT (Navigation Links) */}
-                    <div className="hidden xl:flex items-center justify-center flex-1 min-w-0 px-3 2xl:px-6">
-                        <div className="flex items-center justify-between w-full max-w-4xl 2xl:max-w-5xl gap-x-2 xl:gap-x-3 2xl:gap-x-5">
+                    <div className="hidden lg:flex items-center justify-center flex-1 min-w-0 px-1 xl:px-2">
+                        <div className="flex items-center justify-center w-full max-w-[800px] gap-x-1.5 xl:gap-x-3 2xl:gap-x-4">
                             {menuItems.map((item) => (
                                 <NavLink
                                     key={item.label}
                                     to={item.path}
                                     className={({ isActive }) => `
-                                    relative py-1 text-[11px] xl:text-[12px] 2xl:text-[14px] font-sans font-semibold transition-all duration-300 whitespace-nowrap tracking-[0.04em]
-                                    ${isActive ? "text-teal-700" : "text-teal-900/70 hover:text-teal-900"}
-                                    group/link
+                                    nav-link text-[10px] xl:text-[11px] 2xl:text-[13px] font-semibold whitespace-nowrap tracking-[0.01em] xl:tracking-[0.03em]
+                                    ${isActive ? "text-teal-700 active" : "text-teal-900/70 hover:text-teal-900"}
                                 `}
                                 >
                                     {item.label}
-                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-teal-600 transition-all duration-300 ${location.pathname === item.path ? 'w-full' : 'w-0 group-hover/link:w-full'}`}></span>
                                 </NavLink>
                             ))}
 
                             {/* About Us Dropdown */}
                             <div
-                                className="relative group/about"
+                                className="relative group"
                                 ref={dropdownRef}
                                 onMouseEnter={() => setIsAboutHovered(true)}
                                 onMouseLeave={() => setIsAboutHovered(false)}
                             >
                                 <button
                                     onClick={() => setIsAboutClicked(!isAboutClicked)}
-                                    className={`flex items-center gap-1 py-1 text-[11px] xl:text-[12px] 2xl:text-[14px] font-sans font-semibold transition-all whitespace-nowrap tracking-[0.04em] relative group/aboutlink ${isAboutActive ? 'text-teal-700' : 'text-teal-900/70 hover:text-teal-900'}`}
+                                    className={`flex items-center gap-0.5 py-1 text-[10px] xl:text-[11px] 2xl:text-[13px] font-sans font-semibold transition-all whitespace-nowrap tracking-[0.01em] xl:tracking-[0.03em] relative group/aboutlink ${isAboutActive || isAboutClicked ? 'text-teal-700' : 'text-teal-900/70 hover:text-teal-900'}`}
                                 >
                                     About Us <ChevronDown size={14} className={`transition-transform duration-300 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
-                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-teal-600 transition-all duration-300 ${isAboutActive ? 'w-full' : 'w-0 group-hover/aboutlink:w-full'}`}></span>
+                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-teal-600 transition-all duration-300 ${isAboutActive || isAboutClicked ? 'w-full' : 'w-0 group-hover/aboutlink:w-full'}`}></span>
                                 </button>
                                 <AnimatePresence>
                                     {aboutDropdownOpen && (
-                                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white shadow-2xl rounded-xl overflow-hidden py-2 mt-3 border border-teal-50">
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            className="absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white shadow-2xl rounded-xl overflow-hidden py-2 mt-2 border border-teal-50"
+                                        >
                                             {institutionalLinks.map((link) => (
                                                 link.isExternal ? (
-                                                    <a key={link.label} href={link.path} target="_blank" rel="noopener noreferrer" onClick={() => setIsAboutClicked(false)} className="block px-6 py-3 text-xs font-black text-gray-700 hover:bg-teal-50 hover:text-[#0D9488] transition-all">
+                                                    <a key={link.label} href={link.path} target="_blank" rel="noopener noreferrer" onClick={() => setIsAboutClicked(false)} className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-teal-50 hover:text-[#0D9488] transition-all">
                                                         {link.label}
                                                     </a>
                                                 ) : (
-                                                    <Link key={link.label} to={link.path} onClick={() => setIsAboutClicked(false)} className="block px-6 py-3 text-xs font-black text-gray-700 hover:bg-teal-50 hover:text-[#0D9488] transition-all">
+                                                    <Link key={link.label} to={link.path} onClick={() => setIsAboutClicked(false)} className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-teal-50 hover:text-[#0D9488] transition-all">
                                                         {link.label}
                                                     </Link>
                                                 )
@@ -170,110 +171,114 @@ const Navbar = () => {
 
                     {/* WRAPPER 3: RIGHT (Buttons & Partner Logos) */}
                     <div className="flex items-center justify-end gap-x-2 xl:gap-x-3 shrink-0">
-                        <div className="hidden xl:flex items-center gap-x-1.5 xl:gap-x-2">
-                            <Link to="/join" className="relative px-3 py-1.5 xl:px-3.5 xl:py-1.5 2xl:px-4 2xl:py-2 bg-[#E6B800] text-white font-sans font-bold rounded-full shadow-[0_2px_8px_0_rgba(0,0,0,0.10)] uppercase tracking-[0.06em] text-[10px] xl:text-[11px] 2xl:text-[12px] whitespace-nowrap overflow-hidden group">
+                        <div className="hidden lg:flex items-center gap-x-2 xl:gap-x-3">
+                            <Link to="/join" className="relative bg-[#F5F2E1] text-[#134E4A] hover:bg-[#E8E4D0] transition-colors rounded-full shadow-md py-1.5 lg:py-2 px-3 xl:px-5 text-[10px] xl:text-[12px] uppercase tracking-wider font-bold overflow-hidden group">
                                 <span className="relative z-10">Join Us</span>
                                 {/* Shine Animation */}
-                                <span className="absolute left-[-75%] top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-80 animate-shine" />
+                                <span className="absolute left-[-75%] top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-80 animate-shine-join" />
                                 <style>{`
                                     @keyframes shine {
                                         0% { left: -75%; }
                                         60% { left: 120%; }
                                         100% { left: 120%; }
                                     }
-                                    .animate-shine {
+                                    .animate-shine-join {
+                                        animation: shine 2.1s linear infinite;
+                                        animation-delay: 0.1s;
+                                    }
+                                    .animate-shine-appoint {
                                         animation: shine 1.8s linear infinite;
+                                        animation-delay: 0.3s;
                                     }
                                 `}</style>
                             </Link>
-                            <a href="https://appointment.mmpsrpc.in/" target="_blank" rel="noopener noreferrer" className="px-2 py-1 xl:px-2.5 xl:py-1.5 2xl:px-3.5 2xl:py-2 bg-white text-[#0D9488] border border-teal-100 shadow-sm font-black rounded-full hover:scale-105 active:scale-95 transition-all text-[7px] xl:text-[8px] 2xl:text-[10px] whitespace-nowrap uppercase tracking-[0.08em]">
-                                Appointment
+                            <a href="https://appointment.mmpsrpc.in/" target="_blank" rel="noopener noreferrer" className="relative bg-[#E0F2F1] text-[#0D9488] border border-teal-100 hover:bg-[#B2DFDB] transition-colors shadow-sm rounded-full py-1.5 lg:py-2 px-3 xl:px-5 text-[10px] xl:text-[12px] uppercase tracking-wider font-bold overflow-hidden group">
+                                <span className="relative z-10">Appointment</span>
+                                <span className="absolute left-[-75%] top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-80 animate-shine-appoint" />
                             </a>
                         </div>
 
-                        {/* Partner logos only visible on 2xl+ to keep nav breathing room on laptop widths */}
-                        <div className="hidden 2xl:flex items-center gap-x-2 2xl:gap-x-4 border-l border-teal-900/10 pl-3 2xl:pl-6 shrink-0">
+                        {/* Partner logos visible from xl+ */}
+                        <div className="hidden xl:flex items-center gap-x-2 2xl:gap-x-4 border-l border-teal-900/10 pl-2 2xl:pl-4 shrink-0">
                             <a href="https://www.svkm.org.in/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
-                                <img src={svkmLogo} alt="SVKM" className="h-8 xl:h-9 2xl:h-12 w-auto object-contain" />
+                                <img src={svkmLogo} alt="SVKM" className="h-6 2xl:h-8 w-auto object-contain" />
                             </a>
                             <a href="https://www.ksv.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
-                                <img src={ksvLogo} alt="KSV" className="h-8 xl:h-9 2xl:h-12 w-auto object-contain" />
+                                <img src={ksvLogo} alt="KSV" className="h-6 2xl:h-8 w-auto object-contain" />
                             </a>
                             <a href="https://www.mmpsrpc.in/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
-                                <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-8 xl:h-9 2xl:h-12 w-auto object-contain" />
+                                <img src={mmpsrpcLogo} alt="MMPSRPC" className="h-6 2xl:h-8 w-auto object-contain" />
                             </a>
                         </div>
 
-                        {/* Mobile Toggle — always shows Menu icon; X is inside drawer */}
-                        <button onClick={() => setOpen(true)} className="xl:hidden text-teal-900 p-2.5 hover:bg-teal-50 rounded-lg transition-colors shrink-0 touch-target" aria-label="Open menu">
-                            <Menu size={32} />
+                        {/* Mobile Toggle */}
+                        <button onClick={() => setOpen(true)} className="lg:hidden text-teal-900 p-2 hover:bg-teal-50 rounded-lg transition-colors touch-target" aria-label="Open menu">
+                            <Menu size={28} />
                         </button>
                     </div>
                 </div>
             </nav>
 
-            {/* MOBILE DRAWER — rendered outside <nav> to avoid stacking context conflicts */}
-            <AnimatePresence>
-                {open && (
-                    <>
-                        {/* Backdrop overlay */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            onClick={closeSidebar}
-                            className="fixed inset-0 bg-black/40 z-[200] xl:hidden"
-                            aria-hidden="true"
-                        />
-                        {/* Drawer panel */}
-                        <motion.div
-                            initial={{ x: "100%" }}
-                            animate={{ x: 0 }}
-                            exit={{ x: "100%" }}
-                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 w-[85vw] max-w-md h-[100dvh] bg-white shadow-2xl z-[210] xl:hidden flex flex-col"
-                            role="dialog"
-                            aria-modal="true"
-                            aria-label="Navigation menu"
-                        >
-                            <div className="p-5 flex justify-between items-center border-b border-gray-100 bg-teal-50/30 shrink-0">
-                                <div className="flex items-center gap-3">
-                                    <img src={srlLogo} alt="SRL" className="w-11 h-11 object-contain" />
-                                    <span className="font-black text-[#0D9488] text-lg uppercase tracking-tighter">Students Lab</span>
-                                </div>
-                                <button onClick={closeSidebar} className="p-2.5 text-[#0D9488] hover:bg-teal-50 rounded-full transition-colors touch-target" aria-label="Close menu">
-                                    <X size={24} />
-                                </button>
-                            </div>
-                            <div className="flex-1 overflow-y-auto py-6 px-5 space-y-2 overscroll-contain">
-                                {menuItems.map((item) => (
-                                    <NavLink key={item.label} to={item.path} onClick={closeSidebar} className={({ isActive }) => `block px-5 py-3.5 rounded-2xl font-bold text-lg transition-all ${isActive ? 'bg-teal-50 text-[#0D9488] border-l-4 border-[#0D9488]' : 'text-gray-600 hover:bg-gray-50'}`}>
-                                        {item.label}
-                                    </NavLink>
-                                ))}
-                                <div className="pt-4 mt-2 border-t border-gray-100">
-                                    <p className="px-5 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">About Us</p>
-                                    {institutionalLinks.map((link) => (
-                                        <Link key={link.label} to={link.path} onClick={closeSidebar} className="block px-5 py-3 rounded-2xl font-bold text-base text-gray-600 hover:bg-gray-50 transition-all">
-                                            {link.label}
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="p-6 border-t border-gray-100 space-y-3 bg-gray-50/50 shrink-0">
-                                <Link to="/join" onClick={closeSidebar} className="block w-full py-3.5 text-center bg-gradient-to-r from-[#D97706] to-[#B45309] text-white font-bold rounded-2xl shadow-lg uppercase tracking-wider text-base transition-transform active:scale-95">Join Us Now</Link>
-                                <a href="https://appointment.mmpsrpc.in/" className="block w-full py-3.5 text-center bg-[#0D9488] text-white font-bold rounded-2xl shadow-lg uppercase tracking-wider text-base transition-transform active:scale-95">SRL Appointment</a>
-                                <div className="flex justify-center items-center gap-6 pt-4 pb-2">
-                                    <img src={svkmLogo} className="h-12 w-auto object-contain" alt="SVKM" />
-                                    <img src={ksvLogo} className="h-12 w-auto object-contain" alt="KSV" />
-                                    <img src={mmpsrpcLogo} className="h-12 w-auto object-contain" alt="MMPSRPC" />
-                                </div>
-                            </div>
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
+            {/* MOBILE DRAWER */}
+            {/* MOBILE DRAWER (Always mounted for 60fps hardware accelerated sliding) */}
+            <div 
+                className={`fixed inset-0 z-[200] xl:hidden transition-opacity duration-500 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                aria-hidden={!open}
+            >
+                {/* Backdrop overlay */}
+                <div
+                    onClick={closeSidebar}
+                    className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ease-out ${open ? 'opacity-100' : 'opacity-0'}`}
+                />
+                
+                {/* Drawer panel */}
+                <div
+                    className={`absolute top-0 right-0 w-[85vw] max-w-sm h-full bg-white shadow-2xl flex flex-col pointer-events-auto transform transition-transform duration-500 ease-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Navigation menu"
+                >
+                    <div className="p-4 flex justify-between items-center bg-teal-50 border-b border-teal-100 shrink-0">
+                        <div className="flex items-center gap-2">
+                            <img src={srlLogo} alt="SRL" className="w-10 h-10 object-contain" />
+                            <span className="font-bold text-teal-800 text-sm uppercase tracking-tight">Students Lab</span>
+                        </div>
+                        <button onClick={closeSidebar} className="p-2 text-teal-800 hover:bg-teal-100 rounded-full transition-colors" aria-label="Close menu">
+                            <X size={24} />
+                        </button>
+                    </div>
+                    
+                    <div className="flex-1 overflow-y-auto py-4 px-4 space-y-1">
+                        {menuItems.map((item) => (
+                            <NavLink key={item.label} to={item.path} onClick={closeSidebar} className={({ isActive }) => `block px-4 py-3 rounded-xl font-semibold text-[15px] transition-colors ${isActive ? 'bg-teal-50 text-teal-700' : 'text-gray-700 hover:bg-gray-50'}`}>
+                                {item.label}
+                            </NavLink>
+                        ))}
+                        <div className="pt-3 mt-3 border-t border-gray-100">
+                            <p className="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">About Us</p>
+                            {institutionalLinks.map((link) => (
+                                <Link key={link.label} to={link.path} onClick={closeSidebar} className="block px-4 py-2.5 rounded-xl font-semibold text-[14px] text-gray-700 hover:bg-gray-50 transition-colors">
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="p-5 border-t border-gray-100 space-y-3 bg-gray-50 shrink-0">
+                        <Link to="/join" onClick={closeSidebar} className="flex justify-center w-full py-3 bg-[#E6B800] text-white font-bold rounded-xl shadow-sm uppercase text-[13px] tracking-wide active:bg-[#CC0000] focus:outline-none">
+                            Join Us
+                        </Link>
+                        <a href="https://appointment.mmpsrpc.in/" target="_blank" rel="noopener noreferrer" className="flex justify-center w-full py-3 bg-white text-teal-700 border border-teal-200 font-bold rounded-xl shadow-sm uppercase text-[13px] tracking-wide active:bg-gray-50 focus:outline-none">
+                            Appointment
+                        </a>
+                        <div className="flex justify-center items-center gap-4 pt-3 pb-1">
+                            <img src={svkmLogo} className="h-8 w-auto object-contain opacity-80" alt="SVKM" />
+                            <img src={ksvLogo} className="h-8 w-auto object-contain opacity-80" alt="KSV" />
+                            <img src={mmpsrpcLogo} className="h-8 w-auto object-contain opacity-80" alt="MMPSRPC" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };
