@@ -215,7 +215,7 @@ const Objectives = () => {
                             background: "linear-gradient(90deg,#0f766e,#10b981,#2dd4bf,#FFD700)",
                             WebkitBackgroundClip: "text",
                             WebkitTextFillColor: "transparent"
-                            
+
                         }}
                     >
                         Objectives of SRL
@@ -281,7 +281,8 @@ const Objectives = () => {
                         className={isMobile ? "absolute left-[31.5%] top-[20px] -translate-x-1/2 w-[140px] h-[140px] rounded-full border-[7px] border-[#0f766e] bg-white flex items-center justify-center z-10" : "absolute left-[-130px] top-[290px] w-[200px] h-[200px] rounded-full border-[7px] border-[#0f766e] bg-white flex items-center justify-center shadow-xl z-10"}
                         animate={{ rotate: 360 }}
                         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                        style={isMobile ? { display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 8px #44af8bff, 0 0 18px #61c8a5ff, 0 0 30px #f1f7f555" } : { boxShadow: `
+                        style={isMobile ? { display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 8px #44af8bff, 0 0 18px #61c8a5ff, 0 0 30px #f1f7f555" } : {
+                            boxShadow: `
 0 0 8px #10b981,
 0 0 18px #10b981,
 0 0 40px #10b98155,
@@ -319,7 +320,7 @@ inset 0 0 10px #10b98144
                                     ease: "easeOut"
                                 }}
 
-                                className={`absolute ${isMobile ? "w-[150px] h-[90px]" : "w-[200px] h-[110px] xl:w-[220px] xl:h-[120px] 2xl:w-[260px] 2xl:h-[140px]"} rounded-[80px] flex flex-col items-center justify-center text-center px-6 bg-[#0f766e] overflow-hidden group`}
+                                className={`absolute ${isMobile ? "w-[165px] h-[95px]" : "w-[200px] h-[110px] xl:w-[220px] xl:h-[120px] 2xl:w-[260px] 2xl:h-[140px]"} rounded-[80px] flex flex-col items-center justify-center text-center px-4 bg-[#0f766e] overflow-hidden group`}
 
                                 style={{
                                     top: pos.top,
@@ -329,7 +330,7 @@ inset 0 0 10px #10b98144
 0 0 18px #61c8a5ff,
 0 0 30px #f1f7f555
 `,
-                                    padding: isMobile ? "8px" : undefined
+                                    padding: isMobile ? "10px" : undefined
                                 }}
                             >
 
@@ -347,11 +348,11 @@ inset 0 0 10px #10b98144
                                     }}
                                 />
 
-                                <h3 className={`${isMobile ? "text-[10px]" : "text-sm 2xl:text-lg"} font-bold text-white font-serif leading-snug`}>
+                                <h3 className={`${isMobile ? "text-[11px]" : "text-sm 2xl:text-lg"} font-bold text-white font-serif leading-tight break-words max-w-full`}>
                                     {obj.title}
                                 </h3>
 
-                                <p className={`${isMobile ? "text-[9px]" : "text-xs 2xl:text-sm"} text-white/85 leading-relaxed mt-1`}>
+                                <p className={`${isMobile ? "text-[9.5px]" : "text-xs 2xl:text-sm"} text-white/85 leading-snug mt-1`}>
                                     {obj.description}
                                 </p>
 

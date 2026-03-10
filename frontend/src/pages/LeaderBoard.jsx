@@ -280,27 +280,27 @@ const LeaderBoard = () => {
                                                     <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest truncate w-full text-center">{student.enrollment}</p>
                                                     <div className="flex flex-col items-center mt-1.5 w-full gap-1">
                                                         <div className="flex flex-col gap-2 bg-white px-2 py-2 rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-gray-100/80 w-full">
-                                                            <div className="grid grid-cols-[48px_auto_1fr] items-center gap-x-1.5 w-full">
-                                                                <div className="flex items-center gap-1">
-                                                                    <Award size={12} className="text-blue-500 fill-blue-500 shrink-0" />
-                                                                    <span className="text-[11px] font-black text-gray-800 tabular-nums">{student.srlAttendance}%</span>
+                                                                <div className="grid grid-cols-[48px_auto_1fr] items-center gap-x-1 w-full">
+                                                                    <div className="flex items-center gap-1">
+                                                                        <Award size={11} className="text-blue-500 fill-blue-500 shrink-0" />
+                                                                        <span className="text-[10px] font-black text-gray-800 tabular-nums">{student.srlAttendance}%</span>
+                                                                    </div>
+                                                                    <span className="text-gray-200">|</span>
+                                                                    <span className="text-center text-[8px] text-gray-400 font-bold uppercase tracking-tight">SRL Sessions</span>
                                                                 </div>
-                                                                <span className="text-gray-300">|</span>
-                                                                <span className="text-center text-[9px] text-gray-400 font-bold whitespace-nowrap">SRL SESSIONS</span>
-                                                            </div>
-                                                            <div className="grid grid-cols-[48px_auto_1fr] items-center gap-x-1.5 w-full">
-                                                                <div className="flex items-center gap-1">
-                                                                    <Zap size={12} className="text-emerald-500 fill-emerald-500 shrink-0" />
-                                                                    <span className="text-[11px] font-black text-gray-800 tabular-nums">{student.attendance}%</span>
+                                                                <div className="grid grid-cols-[48px_auto_1fr] items-center gap-x-1 w-full">
+                                                                    <div className="flex items-center gap-1">
+                                                                        <Zap size={11} className="text-emerald-500 fill-emerald-500 shrink-0" />
+                                                                        <span className="text-[10px] font-black text-gray-800 tabular-nums">{student.attendance}%</span>
+                                                                    </div>
+                                                                    <span className="text-gray-200">|</span>
+                                                                    <span className="text-center text-[8px] text-gray-400 font-bold uppercase tracking-tight">Hours</span>
                                                                 </div>
-                                                                <span className="text-gray-300">|</span>
-                                                                <span className="text-center text-[9px] text-gray-400 font-bold whitespace-nowrap lg:whitespace-normal">HOURS <br className="hidden lg:inline" />DEDICATED</span>
                                                             </div>
+                                                            <span className="text-[7px] font-black text-gray-300 uppercase tracking-widest mt-0.5">Performance Stats</span>
                                                         </div>
-                                                        <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest mt-0.5">Attendance</span>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </div>
                                     </motion.div>
                                 ));
@@ -466,48 +466,48 @@ const LeaderBoard = () => {
                                                     initial={{ opacity: 0, y: 15 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     transition={{ delay: 0.1 + (idx * 0.05) }}
-                                                    className={`${displayClass} flex-row items-center justify-between px-5 py-4 sm:p-6 lg:px-5 lg:py-4 bg-white/85 hover:bg-gradient-to-r hover:from-white/90 hover:to-amber-50/90 border border-gray-100/80 rounded-2xl transition-all duration-400 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 group relative overflow-hidden backdrop-blur-sm`}
+                                                    className={`${displayClass} flex-row items-center justify-between px-3 py-4 sm:p-6 lg:px-5 lg:py-4 bg-white/85 hover:bg-gradient-to-r hover:from-white/90 hover:to-amber-50/90 border border-gray-100/80 rounded-2xl transition-all duration-400 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 group relative overflow-hidden backdrop-blur-sm`}
                                                 >
-                                                    {/* Student Photo */}
-                                                    <div className="w-14 h-14 sm:w-20 sm:h-20 lg:w-16 lg:h-16 rounded-2xl overflow-hidden border-2 border-white ring-2 ring-white shadow-md bg-gray-100 flex-shrink-0 group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                                                        <img src={student.image} alt={student.name} className="w-full h-full object-cover" />
+                                                    {/* Rank & Photo */}
+                                                    <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+                                                        <span className="font-black text-gray-300 text-sm sm:text-xl min-w-[20px] sm:min-w-[32px] text-center italic">#{student.rank}</span>
+                                                        <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-white ring-2 ring-white shadow-md bg-gray-100 group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                                                            <img src={student.image} alt={student.name} className="w-full h-full object-cover" />
+                                                        </div>
                                                     </div>
+
                                                     {/* Student Info */}
-                                                    <div className="flex flex-col flex-1 min-w-0 ml-4">
+                                                    <div className="flex flex-col flex-1 min-w-0 ml-3 sm:ml-5">
                                                         {/* Name */}
-                                                        <div className="font-bold text-base sm:text-lg text-gray-900 truncate">
+                                                        <div className="font-bold text-sm sm:text-lg text-gray-900 truncate">
                                                             {student.name.split('\n').join(' ')}
                                                         </div>
-                                                        {/* Year/Batch */}
-                                                        <div className="mt-0.5">
-                                                            <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded">
-                                                                {student.batch}
-                                                            </span>
-                                                        </div>
-                                                        {/* Enrollment, Dept, Semester */}
-                                                        <div className="mt-0.5 text-gray-500 text-sm flex flex-wrap items-center gap-2">
-                                                            <span className="font-mono tracking-tight">{student.enrollment}</span>
-                                                            <span className="">•</span>
-                                                            <span className="uppercase font-semibold">{student.dept}</span>
-                                                            <span className="">•</span>
-                                                            <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs font-bold">{student.semester} Sem</span>
+                                                        {/* Details Group */}
+                                                        <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                                                            <span className="text-[10px] sm:text-xs font-mono text-gray-500 truncate max-w-[80px] sm:max-w-none">{student.enrollment}</span>
+                                                            <span className="hidden sm:inline text-gray-300">•</span>
+                                                            <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase">{student.dept}</span>
+                                                            <span className="text-gray-300">•</span>
+                                                            <span className="text-[10px] sm:text-xs font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">{student.semester} SEM</span>
                                                         </div>
                                                     </div>
+
                                                     {/* Attendance/Points Section (right side) */}
-                                                    <div className="flex flex-col items-end min-w-[90px] ml-4">
-                                                        <div className="flex flex-row gap-4 mb-1">
-                                                            <div className="flex flex-col items-center">
-                                                                <span className="text-blue-500 font-bold text-base">{student.srlAttendance}%</span>
-                                                                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest">SRL SESSIONS</span>
+                                                    <div className="flex flex-col items-end shrink-0 ml-2 sm:ml-4 border-l border-gray-100/50 pl-2 sm:pl-6">
+                                                        <div className="flex flex-col sm:flex-row gap-x-4 gap-y-0.5 mb-1.5 items-end sm:items-center">
+                                                            <div className="flex items-baseline sm:flex-col gap-1 sm:gap-0">
+                                                                <span className="text-blue-500 font-black text-xs sm:text-base">{student.srlAttendance}%</span>
+                                                                <span className="text-[7px] sm:text-[9px] text-gray-400 font-black uppercase tracking-widest">SRL</span>
                                                             </div>
-                                                            <div className="flex flex-col items-center">
-                                                                <span className="text-emerald-500 font-bold text-base">{student.attendance}%</span>
-                                                                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest">HOURS DEDICATED</span>
+                                                            <div className="hidden sm:block w-[1px] h-6 bg-gray-100"></div>
+                                                            <div className="flex items-baseline sm:flex-col gap-1 sm:gap-0">
+                                                                <span className="text-emerald-500 font-black text-xs sm:text-base">{student.attendance}%</span>
+                                                                <span className="text-[7px] sm:text-[9px] text-gray-400 font-black uppercase tracking-widest">HOURS</span>
                                                             </div>
                                                         </div>
-                                                        <div className="flex flex-row items-center gap-1 mt-1">
-                                                            <span className="text-gray-800 font-black text-lg">{student.score}</span>
-                                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">PTS</span>
+                                                        <div className="flex items-center gap-1.5 bg-gray-50/80 px-2 py-0.5 rounded-full border border-gray-100">
+                                                            <span className="text-gray-900 font-black text-xs sm:text-lg">{student.score}</span>
+                                                            <span className="text-[8px] sm:text-[10px] font-black text-gray-400 uppercase tracking-widest">PTS</span>
                                                         </div>
                                                     </div>
                                                 </motion.div>
