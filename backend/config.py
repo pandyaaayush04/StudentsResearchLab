@@ -16,10 +16,14 @@ origins = [
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "*" # Catch-all for CORS if the deployed frontend URL is different
 ]
 
 # DNS patch for Supabase (bypasses local DNS blocks)
-if SUPABASE_URL:
+# We disable this on cloud deployments (like Render) since they have normal DNS and forcing the IP breaks SNI
+is_cloud_deployment = os.getenv("RENDER") == "true" or os.getenv("VERCEL") == "1" or os.getenv("PRODUCTION") == "true"
+
+if SUPABASE_URL and not is_cloud_deployment:
     try:
         supabase_host = urlparse(SUPABASE_URL).hostname
         old_getaddrinfo = socket.getaddrinfo
